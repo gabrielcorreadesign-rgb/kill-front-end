@@ -12,8 +12,10 @@ que a IA nunca vai precisar alucinar nas etapas seguintes.
 
 Front: Vite · React · TypeScript strict + zod nas bordas · Tailwind + tokens
 · shadcn/Radix · mocks realistas + hooks/contexts.
-Back (decisão agora, construção manual depois): Laravel como API pura (sem
-Blade) · Sanctum com token · contrato OpenAPI · envelope de resposta padrão.
+Back (decisão agora, construção manual depois): a stack que O TIME QUE VAI
+IMPLEMENTAR domina — como API pura, auth por token, contrato OpenAPI e
+envelope padrão. Default atual do operador: Laravel + Sanctum. Em cliente
+externo, pergunte quem implementa o back ANTES de fixar a stack dele.
 Desvio conhecido e aprovado: produto mobile → Expo + React Native + NativeWind.
 
 ## Pré-voo

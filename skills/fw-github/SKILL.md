@@ -32,6 +32,12 @@ QA com checklist verde e assinado; contrato OpenAPI fiel aos mocks (audite antes
    bloco "Por ciclo" de `docs/metrics.md` — é o que substitui o "~40%"
    estimado por um número medido, seu.
 
+## Modo new-ds
+O pacote muda: em vez de handoff de back, entrega-se o DS instalável —
+repo com tokens + componentes + showcase + doc de uso (como consumir,
+como estender, checklist Figma do cliente) + guia de contribuição. A retro
+continua obrigatória.
+
 ## Definição de pronto (artefatos)
 
 - Repo entregue: README + pacote completo + `docs/handoff-backend.md`

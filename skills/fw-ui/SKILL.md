@@ -55,6 +55,11 @@ regra de geração (ex.: "line-height px do Figma → leading-[Npx], nunca
 leading-relaxed"). Releia no início de cada lote; aplique ANTES de gerar.
 Duas ocorrências do mesmo desvio sem regra registrada = falha de processo.
 
+## Modo new-ds
+Entrega termina nos componentes: fundações → primitivos → compostos →
+showcase (página que exibe cada componente em todas as variantes/estados —
+é o "produto" deste modo e o objeto do gate). Telas não são geradas.
+
 ## Ordem e lotes
 Fundações → componentes (primitivos → compostos) → telas (só instâncias;
 elemento sem componente = criar o par primeiro). Lotes de 1 tela ou 3–5

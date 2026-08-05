@@ -1,6 +1,6 @@
 ---
 name: framework
-description: Orquestrador do Framework de IA da Alumy (v2) — conduz a construção de produtos com IA do início à entrega de bastão, em 3 cenários (produto novo · produto existente com design system · produto existente sem/with DS incerto) e 2 modos de produção (new-product, new-screens). Use SEMPRE que o usuário pedir para iniciar um produto, onboardar um produto existente no framework, criar telas novas, continuar o fluxo (/framework-next) ou consultar estado (/framework-status). Esta skill roteia; nunca execute uma etapa sem passar por aqui.
+description: Orquestrador do Framework de IA (v2.3) — agnóstico de empresa e projeto: conduz a construção de qualquer produto com IA, do início à entrega de bastão, em 3 cenários de entrada (produto novo · existente com design system · existente sem/with DS incerto) e 3 modos de produção (new-product, new-screens, new-ds — design system como entrega). Use SEMPRE que o usuário pedir para iniciar um produto ou um design system, onboardar um produto existente, criar telas novas, continuar o fluxo (/framework-next) ou consultar estado (/framework-status). Esta skill roteia; nunca execute uma etapa sem passar por aqui.
 ---
 
 # Framework de IA — Orquestrador (v2)
@@ -23,6 +23,18 @@ Antes de qualquer etapa, classifique o produto:
 Se o usuário não sabe o cenário: rode `fw-audit` — o diagnóstico dela
 classifica com evidências e o humano confirma. NUNCA assuma B sem auditar:
 "tem um DS" costuma significar C.
+
+## Modos de produção
+
+| Modo | Pipeline | Entrega |
+|---|---|---|
+| `new-product` | 1→9 | Produto completo (front + contrato pro back) |
+| `new-screens` | 5-lite→9 por lote | Telas novas em produto onboardado |
+| `new-ds` | 1,2,3,4 → 5 (direção) → 6 (só fundações+componentes) → 7 → 9 | Design system como produto: tokens + componentes pareados + doc + showcase — telas ficam pra um ciclo new-screens futuro |
+
+`new-ds` serve a entrega "design system primeiro, telas depois" (comum em
+cliente novo): o QA (8) reduz-se à golden screen + a11y dos componentes, e o
+GITHUB (9) entrega o DS documentado no lugar do handoff de back.
 
 ## Protocolo de estado (`docs/framework-state.md`)
 

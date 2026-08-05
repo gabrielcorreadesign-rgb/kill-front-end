@@ -1,7 +1,8 @@
-# Framework de IA — Kit de Skills (v2.2)
+# Framework de IA — Kit de Skills (v2.3)
 
-Sistema de skills que executa o Framework de IA da Alumy: da definição de
-stack à entrega de bastão pro back-end, com humano orquestrador nos gates e
+Sistema de skills que executa o Framework de IA — agnóstico de empresa e
+projeto: qualquer produto novo, produto existente ou design system de
+cliente. Da definição de stack à entrega, com humano orquestrador nos gates e
 geração **pixel-perfect medida** (diff de pixels com limiar, não "parecido").
 
 ## O que mudou na v2
@@ -21,6 +22,10 @@ geração **pixel-perfect medida** (diff de pixels com limiar, não "parecido").
 - **Estado v2**: cenário, baseline de fidelidade (da tela piloto) e registro
   de exceções aprovadas.
 
+## Passo a passo
+
+Guia prático de uso (por cenário, com quem-faz-o-quê): **GUIA.md**.
+
 ## Instalação
 
 ```bash
@@ -35,6 +40,7 @@ cp commands/*  <repo>/.claude/commands/
 | Comando | O que faz |
 |---|---|
 | `/framework-new-product` | Cenário A — etapas 1→9 |
+| `/framework-new-ds` | Design system como entrega (cliente novo: DS primeiro, telas depois) |
 | `/framework-onboard` | Cenários B/C — fw-audit → fw-onboard → pronto p/ new-screens |
 | `/framework-new-screens` | Telas novas em produto onboardado — 5-lite→9 |
 | `/framework-next` | Continua do ponto atual (o loop) |

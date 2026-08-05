@@ -1,5 +1,12 @@
 # Changelog — Framework de IA (kit)
 
+## v2.3
+- Kit agnóstico de empresa/projeto (removidas amarras à Alumy; back-end
+  definido por quem implementa, com Laravel como default do operador).
+- Modo new-ds: design system como entrega (cliente novo — DS primeiro,
+  telas depois via new-screens sobre cenário B por construção).
+- GUIA.md: passo a passo por cenário com papéis (você · IA · gate).
+
 ## v2.2
 - Repositório-pronto: install.sh, .gitignore, histórico git iniciado.
 - Fontes como pré-requisito da piloto (templates/fonts-checklist.md +
