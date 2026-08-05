@@ -81,6 +81,16 @@ Para o caso "empresa quer o design system, telas vêm depois":
 
 ---
 
+## Painel visual (gamificado e automático)
+
+`/framework-dashboard` (ou `node <kit>/scripts/framework-dashboard.mjs` na
+raiz do produto) → http://localhost:4242. Mostra a jornada das etapas com
+status ao vivo, a missão atual (o que o loop espera de você), conquistas
+(piloto, fidelidade ≤1%, lotes, golden, retro, ciclo completo), lotes com
+tempo/diff e os últimos eventos do log. Zero manutenção: ele só LÊ o
+framework-state.md e o metrics.md que as skills já mantêm — deixe aberto num
+monitor enquanto o /framework-loop roda.
+
 ## Quando algo trava
 
 - A IA reporta `BLOQUEIO` no formato padrão → leia "Preciso de:" e responda.

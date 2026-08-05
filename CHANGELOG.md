@@ -1,5 +1,10 @@
 # Changelog — Framework de IA (kit)
 
+## v2.4
+- Painel visual gamificado (scripts/framework-dashboard.mjs + /framework-dashboard):
+  jornada das etapas ao vivo, missão atual, conquistas, lotes e log —
+  100% automático (lê framework-state.md e metrics.md; zero manutenção).
+
 ## v2.3
 - Kit agnóstico de empresa/projeto (removidas amarras à Alumy; back-end
   definido por quem implementa, com Laravel como default do operador).

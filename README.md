@@ -1,4 +1,4 @@
-# Framework de IA — Kit de Skills (v2.3)
+# Framework de IA — Kit de Skills (v2.4)
 
 Sistema de skills que executa o Framework de IA — agnóstico de empresa e
 projeto: qualquer produto novo, produto existente ou design system de
@@ -46,6 +46,7 @@ cp commands/*  <repo>/.claude/commands/
 | `/framework-next` | Continua do ponto atual (o loop) |
 | `/framework-loop` | Loop contínuo — para só em gate humano, bloqueio ou fim |
 | `/framework-status` | Estado e próximo gate, sem executar |
+| `/framework-dashboard` | Painel visual gamificado do estado (localhost:4242, auto-atualiza) |
 
 Estado em `docs/framework-state.md` — sobrevive entre sessões.
 

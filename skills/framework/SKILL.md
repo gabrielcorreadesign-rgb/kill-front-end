@@ -96,3 +96,5 @@ somente em gate humano, bloqueio ou fim do ciclo. Em ambos:
 Todo artefato docs/ tem esqueleto em `templates/` — SEMPRE crie a partir
 dele (nunca invente formato). Verificação de fidelidade:
 `scripts/pixel-diff.js` (requer `npm i -D pixelmatch pngjs` no produto).
+Painel visual: `scripts/framework-dashboard.mjs` (comando
+/framework-dashboard) — lê o estado e as métricas, zero manutenção.
