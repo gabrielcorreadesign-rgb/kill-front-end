@@ -1,6 +1,6 @@
 ---
 name: fw-github
-description: Etapa 9 do Framework de IA — GITHUB. Entrega de bastão — organiza o repo, monta o pacote de entrega (contrato + mocks + docs + testes), prepara o handoff pro back e roda a retro do framework. Use quando o orquestrador indicar a etapa 9, ou quando o usuário pedir para fechar/entregar um produto do framework.
+description: Etapa 9 do Kill Front-End — GITHUB. Entrega de bastão — organiza o repo, monta o pacote de entrega (contrato + mocks + docs + testes), prepara o handoff pro back e roda a retro do framework. Use quando o orquestrador indicar a etapa 9, ou quando o usuário pedir para fechar/entregar um produto do framework.
 ---
 
 # Etapa 9 — GITHUB
@@ -27,7 +27,7 @@ QA com checklist verde e assinado; contrato OpenAPI fiel aos mocks (audite antes
    MESMOS testes E2E. O front não refatora — muda a origem do dado.
 5. **G5 · Retro do framework**: conduza com o humano (15 min): o que travou?
    o que foi corrigido 2x? qual etapa demorou mais que devia? Converta cada
-   resposta em item de `docs/framework-retro.md` com destino (qual skill/
+   resposta em item de `docs/kfe-retro.md` com destino (qual skill/
    hook/regra melhora). Este arquivo alimenta a próxima versão do framework. Revise o
    docs/calibration.md do produto: toda regra que vale pra QUALQUER produto
    (não específica deste Figma) é promovida ao `calibration-global.md` do
@@ -44,12 +44,12 @@ continua obrigatória.
 ## Definição de pronto (artefatos)
 
 - Repo entregue: README + pacote completo + `docs/handoff-backend.md`
-- `docs/framework-retro.md` com o backlog de melhorias
+- `docs/kfe-retro.md` com o backlog de melhorias
 
 ## Gate (humano — final)
 
 O humano confere o pacote, agenda a sessão de handoff com o dev de back e
-declara a entrega. O framework-state marca o ciclo como concluído.
+declara a entrega. O kfe-state marca o ciclo como concluído.
 
 ## Regras
 
@@ -57,4 +57,4 @@ declara a entrega. O framework-state marca o ciclo como concluído.
 - Back-end é implementação manual do time de back — o framework entrega
   tudo PRONTO pra isso, e para aí.
 
-Protocolos comuns: `.claude/skills/framework/protocols.md`.
+Protocolos comuns: `.claude/skills/kill-front-end/protocols.md`.

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * framework-dashboard.mjs — painel visual automático do Framework de IA (v2.4)
- * Uso (na raiz do produto): node <kit>/scripts/framework-dashboard.mjs [porta]
- * Lê docs/framework-state.md + docs/metrics.md e renderiza a jornada
+ * kfe-dashboard.mjs — painel visual automático do Kill Front-End (v2.4)
+ * Uso (na raiz do produto): node <kit>/scripts/kfe-dashboard.mjs [porta]
+ * Lê docs/kfe-state.md + docs/metrics.md e renderiza a jornada
  * gamificada em http://localhost:4242 — auto-atualiza a cada 3s.
  * Zero dependências.
  */
@@ -11,11 +11,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const PORT = parseInt(process.argv[2] || '4242', 10);
-const STATE = path.resolve('docs/framework-state.md');
+const STATE = path.resolve('docs/kfe-state.md');
 const METRICS = path.resolve('docs/metrics.md');
 
 function parseState() {
-  if (!fs.existsSync(STATE)) return { error: 'docs/framework-state.md não encontrado — rode um comando /framework-* primeiro.' };
+  if (!fs.existsSync(STATE)) return { error: 'docs/kfe-state.md não encontrado — rode um comando /kfe-* primeiro.' };
   const md = fs.readFileSync(STATE, 'utf8');
   const meta = {};
   for (const line of md.split('\n').slice(0, 6)) {
@@ -48,7 +48,7 @@ function parseState() {
 }
 
 const HTML = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
-<title>Framework de IA — painel</title>
+<title>Kill Front-End — painel</title>
 <style>
   :root{--bg:#10151F;--card:#171E2B;--ink:#EAF0FA;--mut:#8FA0BC;--blue:#2F6FED;
     --ok:#3ECF8E;--warn:#F5B83D;--bad:#F26D6D;--pend:#3A4457}
@@ -80,7 +80,7 @@ const HTML = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
   .quest{border-left:4px solid var(--warn);padding-left:12px}
   .log li{color:var(--mut);font-size:12.5px;margin-bottom:4px}
 </style></head><body>
-<h1 id="titulo">Framework de IA</h1><div class="mut" id="sub">carregando…</div>
+<h1 id="titulo">Kill Front-End</h1><div class="mut" id="sub">carregando…</div>
 <div class="bar"><i id="prog" style="width:0%"></i></div>
 <div class="mut" id="pct"></div>
 <div class="map" id="map"></div>
@@ -96,7 +96,7 @@ async function tick(){
   const r=await fetch('/state.json');const d=await r.json();
   if(d.error){document.getElementById('sub').textContent=d.error;return}
   const m=d.meta;
-  document.getElementById('titulo').textContent=(m['Produto']||'Framework de IA');
+  document.getElementById('titulo').textContent=(m['Produto']||'Kill Front-End');
   document.getElementById('sub').textContent='Cenário '+(m['Cenário']||'—')+' · Modo '+(m['Modo']||'—')+' · '+(m['Kit']||'')+(m['Baseline de fidelidade']&&m['Baseline de fidelidade']!=='—'?' · fidelidade '+m['Baseline de fidelidade']:'');
   const done=d.stages.filter(s=>s.status==='concluída').length;
   const pct=d.stages.length?Math.round(done/d.stages.length*100):0;
@@ -122,4 +122,4 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
     res.end(HTML);
   }
-}).listen(PORT, () => console.log(`Painel do Framework: http://localhost:${PORT} (lendo ${STATE})`));
+}).listen(PORT, () => console.log(`Painel Kill Front-End: http://localhost:${PORT} (lendo ${STATE})`));

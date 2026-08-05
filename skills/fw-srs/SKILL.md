@@ -1,6 +1,6 @@
 ---
 name: fw-srs
-description: Etapa 2 do Framework de IA — SRS. Gera a documentação global do projeto (PRD, objetos de domínio, regras de negócio, specs por área, glossário) e a skill do projeto. Use quando o orquestrador indicar a etapa 2, ou quando o usuário pedir a documentação-fonte de um produto do framework.
+description: Etapa 2 do Kill Front-End — SRS. Gera a documentação global do projeto (PRD, objetos de domínio, regras de negócio, specs por área, glossário) e a skill do projeto. Use quando o orquestrador indicar a etapa 2, ou quando o usuário pedir a documentação-fonte de um produto do framework.
 ---
 
 # Etapa 2 — SRS
@@ -48,4 +48,4 @@ apresentados em resumo; ele mergulha se quiser.
 - Doc nasce ANTES do código que governa. Doc depois é ata; antes é contrato.
 - Não invente regra de negócio: pergunta aberta > suposição registrada.
 
-Protocolos comuns: `.claude/skills/framework/protocols.md`.
+Protocolos comuns: `.claude/skills/kill-front-end/protocols.md`.

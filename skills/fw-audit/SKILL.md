@@ -1,6 +1,6 @@
 ---
 name: fw-audit
-description: Diagnóstico de produto existente para o Framework de IA — audita código, Figma, paridade e documentação, e classifica o cenário (B com design system, C sem/incerto) com evidências. Use antes de onboardar qualquer produto existente, quando o usuário não sabe o estado do DS, ou quando o orquestrador rotear cenários B/C.
+description: Diagnóstico de produto existente para o Kill Front-End — audita código, Figma, paridade e documentação, e classifica o cenário (B com design system, C sem/incerto) com evidências. Use antes de onboardar qualquer produto existente, quando o usuário não sabe o estado do DS, ou quando o orquestrador rotear cenários B/C.
 ---
 
 # fw-audit — Diagnóstico de produto existente
@@ -40,4 +40,4 @@ priorizados, classificação proposta + justificativa.
 ## Gate (humano)
 O humano confirma o cenário e escolhe as telas-alvo do primeiro lote (o
 onboarding C usa isso para escopo). Siga: protocolos comuns em
-`.claude/skills/framework/protocols.md`.
+`.claude/skills/kill-front-end/protocols.md`.

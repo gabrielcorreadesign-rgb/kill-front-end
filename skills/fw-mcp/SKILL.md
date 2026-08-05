@@ -1,6 +1,6 @@
 ---
 name: fw-mcp
-description: Etapa 4 do Framework de IA (v2) — MCP. Conecta e CALIBRA o ambiente Claude Code + Figma + VS Code + Playwright — checklist de prontidão bloqueante, padronização de render e tela piloto com baseline de fidelidade medida. Use quando o orquestrador indicar a etapa 4, ou para conectar/validar/calibrar o pipeline Figma-código.
+description: Etapa 4 do Kill Front-End (v2) — MCP. Conecta e CALIBRA o ambiente Claude Code + Figma + VS Code + Playwright — checklist de prontidão bloqueante, padronização de render e tela piloto com baseline de fidelidade medida. Use quando o orquestrador indicar a etapa 4, ou para conectar/validar/calibrar o pipeline Figma-código.
 ---
 
 # Etapa 4 — MCP (conexão + calibração)
@@ -36,7 +36,7 @@ invalida qualquer diff.
 4. **M4 · Playwright MCP**: instale e valide com um screenshot real.
 5. **M3 · Tela piloto (baseline)**: uma tela simples, ciclo completo da
    fw-ui (extração → geração → diff). Anote: % de diff final, nº de ciclos,
-   causas das divergências. Grave a baseline no framework-state e as causas
+   causas das divergências. Grave a baseline no kfe-state e as causas
    como primeiras entradas do `docs/calibration.md`.
 6. **Golden screen**: congele a piloto aprovada como regressão do pipeline —
    crie `tests/golden/<tela>/` (figma.png, render.png, params.md) seguindo
@@ -50,4 +50,4 @@ Conexões validadas · checklist bloqueante publicado com parâmetros de render
 Compara piloto vs. Figma e aprova. Cada correção apontada vira regra
 (CLAUDE.md ou calibration.md) ANTES da etapa 6 abrir. Regras: Figma é a
 verdade absoluta; sem auto-layout, sem geração; nunca compensar arquivo
-bagunçado com prompt. Protocolos: `.claude/skills/framework/protocols.md`.
+bagunçado com prompt. Protocolos: `.claude/skills/kill-front-end/protocols.md`.

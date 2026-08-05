@@ -1,6 +1,6 @@
-Rode o Framework de IA em loop contínuo até o próximo GATE HUMANO.
+Rode o Kill Front-End em loop contínuo até o próximo GATE HUMANO.
 
-Carregue a skill `framework`. Execute o loop (/framework-next repetidamente)
+Carregue a skill `kill-front-end`. Execute o loop (/kfe-next repetidamente)
 avançando por etapas e gates técnicos sem pausar, e PARE somente quando:
 (a) alcançar um gate humano — apresente o resumo de gate e aguarde;
 (b) um pré-voo reprovar ou um bloqueio ocorrer — apresente o protocolo de

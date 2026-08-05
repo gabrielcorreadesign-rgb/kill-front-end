@@ -1,7 +1,7 @@
-# Guardião do Framework de IA — copie para .github/workflows/framework.yml
+# Guardião do Kill Front-End — copie para .github/workflows/kfe.yml
 # O pipeline vira instituição: nada mergeia quebrando lint, tipos, build
 # ou a golden screen — nem num dia apressado.
-name: framework-guardian
+name: kfe-guardian
 on: [pull_request]
 jobs:
   guardian:

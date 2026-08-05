@@ -1,8 +1,16 @@
-# Changelog — Framework de IA (kit)
+# Changelog — Kill Front-End (kit)
+
+## v3.0
+- REBRAND: o framework agora se chama Kill Front-End (KFE). Skill
+  orquestradora `kill-front-end`, comandos /kfe-*, estado em
+  docs/kfe-state.md, dashboard kfe-dashboard.mjs, CI kfe-guardian.
+- Rumo a produto: o kit passa a ser refinado para operação comercial —
+  venda como serviço para empresas (kill-back-end virá na sequência,
+  nascendo do contrato OpenAPI + testes E2E que o KFE já entrega).
 
 ## v2.5
 - Paralelização com subagentes na fw-ui (até 4, verificação central única).
-- CI guardião: templates/ci-framework.yml instalado pela fw-install —
+- CI guardião: templates/ci-kfe.yml instalado pela fw-install —
   lint, tipos, build e golden bloqueando merge.
 - Relatório de lote pro cliente: scripts/lote-report.mjs (números + lado a
   lado a partir de metrics.md e dos pares de screenshot).
@@ -10,9 +18,9 @@
   a retro promove regras genéricas de volta — aprendizado composto.
 
 ## v2.4
-- Painel visual gamificado (scripts/framework-dashboard.mjs + /framework-dashboard):
+- Painel visual gamificado (scripts/kfe-dashboard.mjs + /kfe-dashboard):
   jornada das etapas ao vivo, missão atual, conquistas, lotes e log —
-  100% automático (lê framework-state.md e metrics.md; zero manutenção).
+  100% automático (lê kfe-state.md e metrics.md; zero manutenção).
 
 ## v2.3
 - Kit agnóstico de empresa/projeto (removidas amarras à Alumy; back-end
@@ -36,7 +44,7 @@
   é inventado na hora.
 - scripts/pixel-diff.js: verificação objetiva (PASS/FAIL, % de pixels,
   geometria zero-tolerância) usada pela fw-ui e pela tela piloto.
-- /framework-loop: execução contínua que para apenas em gate humano,
+- /kfe-loop: execução contínua que para apenas em gate humano,
   bloqueio ou fim de ciclo.
 - Estado com tabela de lotes (new-screens) e trilha AUDIT/ONBOARD (B/C).
 

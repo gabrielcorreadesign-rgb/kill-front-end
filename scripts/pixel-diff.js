@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * pixel-diff.js — verificação objetiva de fidelidade (Framework de IA v2.1)
+ * pixel-diff.js — verificação objetiva de fidelidade (Kill Front-End v2.1)
  * Uso: node scripts/pixel-diff.js <figma.png> <render.png> [saida-diff.png] [--threshold=0.1] [--max=1.0]
  * Saída: % de pixels divergentes + PASS/FAIL contra --max (default 1.0%).
  * Falha também se as dimensões divergirem (geometria = zero tolerância).

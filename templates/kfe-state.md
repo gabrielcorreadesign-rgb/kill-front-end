@@ -1,4 +1,4 @@
-# Framework — estado
+# Kill Front-End — estado
 Produto: <nome> · Cenário: <A|B|C> · Modo: <new-product|new-screens>
 Kit: v2.1 · Início: <AAAA-MM-DD> · Baseline de fidelidade: <—|N,N% (tela piloto)>
 

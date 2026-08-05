@@ -1,6 +1,6 @@
 ---
 name: fw-stacks
-description: Etapa 1 do Framework de IA — STACKS. Define as tecnologias do front e do back e a fronteira entre eles (contrato de API). Use quando o orquestrador (skill framework) indicar a etapa 1, ou quando o usuário pedir para definir/revisar a stack de um produto do framework.
+description: Etapa 1 do Kill Front-End — STACKS. Define as tecnologias do front e do back e a fronteira entre eles (contrato de API). Use quando o orquestrador (skill kill-front-end) indicar a etapa 1, ou quando o usuário pedir para definir/revisar a stack de um produto do framework.
 ---
 
 # Etapa 1 — STACKS
@@ -51,4 +51,4 @@ decisões de fronteira (auth/envelope/idioma). O humano aprova ou ajusta.
 - Stack estável = skills valiosas: não proponha troca por novidade.
 - O back não se implementa aqui nem em etapa nenhuma — só se decide.
 
-Protocolos comuns: `.claude/skills/framework/protocols.md`.
+Protocolos comuns: `.claude/skills/kill-front-end/protocols.md`.

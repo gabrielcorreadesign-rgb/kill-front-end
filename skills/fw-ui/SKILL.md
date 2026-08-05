@@ -1,6 +1,6 @@
 ---
 name: fw-ui
-description: Etapa 6 do Framework de IA (v2) — UI pixel-perfect. Motor de geração Figma→código com protocolo de extração exata, verificação por diff de pixels com limiar numérico e registro de calibração. Use quando o orquestrador indicar a etapa 6, ou quando o usuário pedir para gerar componentes ou telas a partir do Figma.
+description: Etapa 6 do Kill Front-End (v2) — UI pixel-perfect. Motor de geração Figma→código com protocolo de extração exata, verificação por diff de pixels com limiar numérico e registro de calibração. Use quando o orquestrador indicar a etapa 6, ou quando o usuário pedir para gerar componentes ou telas a partir do Figma.
 ---
 
 # Etapa 6 — UI e IA (pixel-perfect)
@@ -97,4 +97,4 @@ a linha do lote em `docs/metrics.md` (tempo, itens, diff médio, ciclos,
 correções humanas — template em `templates/metrics.md`). Fidelidade
 o robô já mediu — o humano avalia o que máquina não vê: sensação, micro-
 interação, adequação. Correção apontada 2x → calibration.md antes do próximo
-lote. Protocolos: `.claude/skills/framework/protocols.md`.
+lote. Protocolos: `.claude/skills/kill-front-end/protocols.md`.

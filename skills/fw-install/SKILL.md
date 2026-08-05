@@ -1,6 +1,6 @@
 ---
 name: fw-install
-description: Etapa 3 do Framework de IA — INSTALL. Prepara o repositório antes de qualquer código de produto — CLAUDE.md, skills auxiliares, hooks, templates, lint e CI. Use quando o orquestrador indicar a etapa 3, ou quando o usuário pedir o setup/preparo de um repo do framework.
+description: Etapa 3 do Kill Front-End — INSTALL. Prepara o repositório antes de qualquer código de produto — CLAUDE.md, skills auxiliares, hooks, templates, lint e CI. Use quando o orquestrador indicar a etapa 3, ou quando o usuário pedir o setup/preparo de um repo do framework.
 ---
 
 # Etapa 3 — INSTALL
@@ -30,7 +30,7 @@ SRS concluída (o CLAUDE.md referencia docs/ que precisam existir); permissão p
 6. **Calibração herdada + CI guardião**: crie docs/calibration.md a partir
    de `templates/calibration.md` e IMPORTE as regras de `calibration-global.md`
    do kit (o produto nasce com as cicatrizes dos projetos anteriores curadas).
-   Copie `templates/ci-framework.yml` para .github/workflows/framework.yml —
+   Copie `templates/ci-kfe.yml` para .github/workflows/kfe.yml —
    lint, tipos, build e golden screen bloqueando merge desde o commit 0.
 7. **I5 · Anti-token**: confira que CLAUDE.md e skills usam referência por
    caminho, não conteúdo colado; exemplos mínimos; uma fonte por assunto.
@@ -51,4 +51,4 @@ o resumo ao humano; aprovação rápida, sem revisão profunda.
 - Skill = conhecimento (como fazer). Hook = disciplina (quando lembrar).
 - Cada instrução que o humano repetir 2x daqui em diante volta pra cá.
 
-Protocolos comuns: `.claude/skills/framework/protocols.md`. Modo "sobre repo existente" (cenários B/C): nunca recriar o que existe — auditar, completar e atualizar por diff.
+Protocolos comuns: `.claude/skills/kill-front-end/protocols.md`. Modo "sobre repo existente" (cenários B/C): nunca recriar o que existe — auditar, completar e atualizar por diff.

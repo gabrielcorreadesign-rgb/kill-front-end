@@ -1,6 +1,6 @@
 ---
 name: fw-ux
-description: Etapa 5 do Framework de IA — UX. Design thinking com IA na síntese (pesquisa, user flows, moodboard, corte do MVP). Tem modo completo (produto novo) e modo lite (telas novas). Use quando o orquestrador indicar a etapa 5, ou quando o usuário pedir síntese de pesquisa, fluxos ou definição de escopo de telas.
+description: Etapa 5 do Kill Front-End — UX. Design thinking com IA na síntese (pesquisa, user flows, moodboard, corte do MVP). Tem modo completo (produto novo) e modo lite (telas novas). Use quando o orquestrador indicar a etapa 5, ou quando o usuário pedir síntese de pesquisa, fluxos ou definição de escopo de telas.
 ---
 
 # Etapa 5 — UX
@@ -49,4 +49,4 @@ importante do framework: tudo depois dele é execução.
 - IA sintetiza, humano escuta: nunca invente dado de usuário ou persona.
 - Tela nenhuma nasce antes do fluxo aprovado.
 
-Protocolos comuns: `.claude/skills/framework/protocols.md`.
+Protocolos comuns: `.claude/skills/kill-front-end/protocols.md`.

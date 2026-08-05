@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Instala o kit do Framework de IA num produto (ou global com --global)
+# Instala o kit do Kill Front-End num produto (ou global com --global)
 set -euo pipefail
 KIT_DIR="$(cd "$(dirname "$0")" && pwd)"
 if [[ "${1:-}" == "--global" ]]; then DEST="$HOME/.claude"; else

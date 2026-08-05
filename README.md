@@ -1,6 +1,6 @@
-# Framework de IA — Kit de Skills (v2.5)
+# Kill Front-End — Kit de Skills (v3.0)
 
-Sistema de skills que executa o Framework de IA — agnóstico de empresa e
+O design vira código pixel-perfect, medido. Sistema de skills — agnóstico de empresa e
 projeto: qualquer produto novo, produto existente ou design system de
 cliente. Da definição de stack à entrega, com humano orquestrador nos gates e
 geração **pixel-perfect medida** (diff de pixels com limiar, não "parecido").
@@ -16,7 +16,7 @@ geração **pixel-perfect medida** (diff de pixels com limiar, não "parecido").
   pixels (aceite: ≤ 1% e geometria zero-divergente), fontes com checagem
   anti-fallback, e `docs/calibration.md` — o livro-razão que converte cada
   divergência recorrente em regra, fazendo o ajuste humano tender a zero.
-- **Protocolos comuns** (`skills/framework/protocols.md`): pré-voo, definição
+- **Protocolos comuns** (`skills/kill-front-end/protocols.md`): pré-voo, definição
   de pronto, protocolo de falha/escalada, formato de gate, idempotência e
   caminhos padrão — herdados por todas as etapas.
 - **Estado v2**: cenário, baseline de fidelidade (da tela piloto) e registro
@@ -39,16 +39,16 @@ cp commands/*  <repo>/.claude/commands/
 
 | Comando | O que faz |
 |---|---|
-| `/framework-new-product` | Cenário A — etapas 1→9 |
-| `/framework-new-ds` | Design system como entrega (cliente novo: DS primeiro, telas depois) |
-| `/framework-onboard` | Cenários B/C — fw-audit → fw-onboard → pronto p/ new-screens |
-| `/framework-new-screens` | Telas novas em produto onboardado — 5-lite→9 |
-| `/framework-next` | Continua do ponto atual (o loop) |
-| `/framework-loop` | Loop contínuo — para só em gate humano, bloqueio ou fim |
-| `/framework-status` | Estado e próximo gate, sem executar |
-| `/framework-dashboard` | Painel visual gamificado do estado (localhost:4242, auto-atualiza) |
+| `/kfe-new-product` | Cenário A — etapas 1→9 |
+| `/kfe-new-ds` | Design system como entrega (cliente novo: DS primeiro, telas depois) |
+| `/kfe-onboard` | Cenários B/C — fw-audit → fw-onboard → pronto p/ new-screens |
+| `/kfe-new-screens` | Telas novas em produto onboardado — 5-lite→9 |
+| `/kfe-next` | Continua do ponto atual (o loop) |
+| `/kfe-loop` | Loop contínuo — para só em gate humano, bloqueio ou fim |
+| `/kfe-status` | Estado e próximo gate, sem executar |
+| `/kfe-dashboard` | Painel visual gamificado do estado (localhost:4242, auto-atualiza) |
 
-Estado em `docs/framework-state.md` — sobrevive entre sessões.
+Estado em `docs/kfe-state.md` — sobrevive entre sessões.
 
 ## Conteúdo do kit
 

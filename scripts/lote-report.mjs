@@ -17,7 +17,7 @@ const outFile = `reports/lote-${lote}.html`;
 
 let produto = 'Produto';
 try {
-  const st = fs.readFileSync('docs/framework-state.md', 'utf8');
+  const st = fs.readFileSync('docs/kfe-state.md', 'utf8');
   produto = (st.match(/Produto:\s*([^·\n]+)/) || [])[1]?.trim() || produto;
 } catch {}
 
@@ -58,7 +58,7 @@ figcaption{font-size:12px;color:#5A6472;margin-top:4px}
 .ok{color:#0F7B4D;font-weight:600}.foot{margin-top:34px;font-size:12px;color:#8FA0BC}
 </style></head><body>
 <h1>${produto} — relatório do lote ${lote}</h1>
-<div class="mut">${row?.data || new Date().toISOString().slice(0, 10)} · gerado pelo Framework de IA</div>
+<div class="mut">${row?.data || new Date().toISOString().slice(0, 10)} · gerado pelo Kill Front-End</div>
 <div class="stats">${stat('Itens', row?.itens)}${stat('Tempo', row?.tempo)}${stat('Fidelidade média', row?.diff)}${stat('Ciclos médios', row?.ciclos)}</div>
 ${pairs.map(p => `<div class="pair"><h3>${p.item}</h3>${p.diff ? `<span class="ok">diff ${p.diff}</span>` : ''}<div class="imgs"><figure><img src="${p.figma}" alt="Figma — ${p.item}"><figcaption>Figma (verdade)</figcaption></figure><figure><img src="${p.render}" alt="Render — ${p.item}"><figcaption>Código (render)</figcaption></figure></div></div>`).join('') || '<p class="mut">Sem pares de imagem em ' + imgDir + ' — o relatório sai só com os números.</p>'}
 <div class="foot">Fidelidade medida por diff de pixels (scripts/pixel-diff.js) contra o export do Figma, no viewport do frame.</div>

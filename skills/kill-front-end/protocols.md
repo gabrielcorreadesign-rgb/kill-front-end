@@ -53,7 +53,7 @@ componente). Re-rodar uma etapa concluída exige confirmação do humano.
 
 | Artefato | Caminho |
 |---|---|
-| Estado | docs/framework-state.md |
+| Estado | docs/kfe-state.md |
 | Stack e lista negativa | docs/stack.md |
 | Contrato de API | docs/api-contract.yaml |
 | PRD / regras / glossário | docs/prd.md · docs/regras.md · docs/glossario.md |
@@ -62,12 +62,12 @@ componente). Re-rodar uma etapa concluída exige confirmação do humano.
 | Checklist Figma | docs/figma-checklist.md |
 | Calibração de fidelidade | docs/calibration.md |
 | Auditoria / onboarding | docs/audit.md · docs/onboard-plan.md |
-| ADRs / retro | docs/adr.md · docs/framework-retro.md |
+| ADRs / retro | docs/adr.md · docs/kfe-retro.md |
 | QA | tests/e2e/ · docs/qa-release.md |
 | Handoff | docs/handoff-backend.md |
 | Fontes | docs/fonts-checklist.md |
 | Métricas | docs/metrics.md |
 | Golden screens | tests/golden/ |
 | Relatórios de lote | reports/ |
-| CI do produto | .github/workflows/framework.yml |
+| CI do produto | .github/workflows/kfe.yml |
 | Calibração global | <kit>/calibration-global.md |

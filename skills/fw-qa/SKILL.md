@@ -1,6 +1,6 @@
 ---
 name: fw-qa
-description: Etapa 8 do Framework de IA — QA. Testes E2E autônomos via Playwright derivados das specs, preview na Vercel e loop de correção até o checklist de release ficar verde. Use quando o orquestrador indicar a etapa 8, ou quando o usuário pedir para testar fluxos de um produto do framework.
+description: Etapa 8 do Kill Front-End — QA. Testes E2E autônomos via Playwright derivados das specs, preview na Vercel e loop de correção até o checklist de release ficar verde. Use quando o orquestrador indicar a etapa 8, ou quando o usuário pedir para testar fluxos de um produto do framework.
 ---
 
 # Etapa 8 — QA
@@ -43,4 +43,4 @@ apontada vira bug ou vira ADR — nunca fica no ar.
 - Roteiro nasce da spec. Teste que só confirma o que o código faz não testa nada.
 - QA automatizado não substitui olho humano; preview não substitui a suíte.
 
-Protocolos comuns: `.claude/skills/framework/protocols.md`.
+Protocolos comuns: `.claude/skills/kill-front-end/protocols.md`.

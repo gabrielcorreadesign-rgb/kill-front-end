@@ -1,6 +1,6 @@
 ---
 name: fw-onboard
-description: Onboarding de produto existente no Framework de IA — modo pareamento (cenário B, com design system) ou engenharia reversa (cenário C, sem DS ou incerto). Prepara tokens, paridade, docs retroativas e infraestrutura até o produto ficar pronto para o modo new-screens. Use após fw-audit, quando o orquestrador rotear cenários B ou C.
+description: Onboarding de produto existente no Kill Front-End — modo pareamento (cenário B, com design system) ou engenharia reversa (cenário C, sem DS ou incerto). Prepara tokens, paridade, docs retroativas e infraestrutura até o produto ficar pronto para o modo new-screens. Use após fw-audit, quando o orquestrador rotear cenários B ou C.
 ---
 
 # fw-onboard — Onboarding de produto existente
@@ -49,4 +49,4 @@ que ficou de backlog) · baseline de fidelidade registrada no estado.
 ## Gate (humano)
 Modo B: aprova o mapa de tokens e as decisões de paridade. Modo C: aprova o
 conjunto canônico + fonte + escopo do DS mínimo. Depois disso o produto
-entra no modo new-screens. Protocolos: `.claude/skills/framework/protocols.md`.
+entra no modo new-screens. Protocolos: `.claude/skills/kill-front-end/protocols.md`.

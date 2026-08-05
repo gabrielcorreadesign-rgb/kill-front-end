@@ -1,6 +1,6 @@
 ---
 name: fw-doc
-description: Etapa 7 do Framework de IA — DOC. Pipeline de documentação automática — extrai doc dos componentes pro design system, sincroniza regras de negócio na SRS e registra ADRs. Use quando o orquestrador indicar a etapa 7, ao fim de cada lote da etapa 6, ou quando o usuário pedir para atualizar a documentação de um produto do framework.
+description: Etapa 7 do Kill Front-End — DOC. Pipeline de documentação automática — extrai doc dos componentes pro design system, sincroniza regras de negócio na SRS e registra ADRs. Use quando o orquestrador indicar a etapa 7, ao fim de cada lote da etapa 6, ou quando o usuário pedir para atualizar a documentação de um produto do framework.
 ---
 
 # Etapa 7 — DOC
@@ -45,4 +45,4 @@ dedicada — o resultado aparece no gate da UI.
 - Doc é parte da definição de pronto, não um extra.
 - Desvio sem ADR é bug esperando ser "corrigido" de volta.
 
-Protocolos comuns: `.claude/skills/framework/protocols.md`.
+Protocolos comuns: `.claude/skills/kill-front-end/protocols.md`.

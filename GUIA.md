@@ -1,4 +1,4 @@
-# Guia passo a passo — Framework de IA (v2.3)
+# Guia passo a passo — Kill Front-End (v2.3)
 
 O README é a referência; este guia é a receita. Siga na ordem. Legenda:
 🧑 = você faz/decide · 🤖 = a IA executa · 🚪 = gate (o loop para e espera você).
@@ -17,7 +17,7 @@ Pronto. Daqui em diante, tudo começa com um comando.
 
 ---
 
-## Cenário A · Produto novo — `/framework-new-product`
+## Cenário A · Produto novo — `/kfe-new-product`
 
 | # | Etapa | O que acontece | Você |
 |---|-------|----------------|------|
@@ -31,12 +31,12 @@ Pronto. Daqui em diante, tudo começa com um comando.
 | 8 | QA | 🤖 deriva roteiros das specs, testa, corrige em loop, publica preview | 🚪 teste na URL (celular incluso) e assine o checklist |
 | 9 | GITHUB | 🤖 monta o pacote de entrega + handoff do back + retro | 🚪 final: confere pacote, agenda handoff, responde a retro |
 
-Dica de ritmo: rode `/framework-loop` — ele avança sozinho e só para nos 🚪.
-`/framework-status` a qualquer momento mostra onde você está.
+Dica de ritmo: rode `/kfe-loop` — ele avança sozinho e só para nos 🚪.
+`/kfe-status` a qualquer momento mostra onde você está.
 
 ---
 
-## Cenário B/C · Produto existente — `/framework-onboard`
+## Cenário B/C · Produto existente — `/kfe-onboard`
 
 1. 🤖 `fw-audit` mede: tokens vs. valores soltos, componentização, Figma,
    paridade, docs → `docs/audit.md` com classificação proposta (B ou C).
@@ -52,20 +52,20 @@ Dica de ritmo: rode `/framework-loop` — ele avança sozinho e só para nos �
 
 ---
 
-## Dia a dia · Telas novas — `/framework-new-screens`
+## Dia a dia · Telas novas — `/kfe-new-screens`
 
 O modo que você mais vai usar:
 
 1. 🧑 Desenhe as telas no Figma passando no checklist do produto.
-2. 🧑 `/framework-new-screens` → 🤖 valida pré-requisitos e roda UX-lite
+2. 🧑 `/kfe-new-screens` → 🤖 valida pré-requisitos e roda UX-lite
    (flow do lote + specs das áreas novas se faltarem).
 3. 🚪 Aprova o mini-escopo do lote.
-4. 🤖 `/framework-loop`: UI (com golden screen no início) → DOC → QA →
+4. 🤖 `/kfe-loop`: UI (com golden screen no início) → DOC → QA →
    entrega parcial. Você aparece nos gates de lote e no preview.
 
 ---
 
-## Cliente novo · DS primeiro, telas depois — `/framework-new-ds`
+## Cliente novo · DS primeiro, telas depois — `/kfe-new-ds`
 
 Para o caso "empresa quer o design system, telas vêm depois":
 
@@ -77,25 +77,25 @@ Para o caso "empresa quer o design system, telas vêm depois":
 4. GITHUB entrega o DS instalável: tokens + componentes + showcase + doc de
    uso e extensão + checklist Figma do cliente.
 5. Quando vierem as telas: o produto já é cenário B por construção —
-   `/framework-new-screens` direto.
+   `/kfe-new-screens` direto.
 
 ---
 
 ## Painel visual (gamificado e automático)
 
-`/framework-dashboard` (ou `node <kit>/scripts/framework-dashboard.mjs` na
+`/kfe-dashboard` (ou `node <kit>/scripts/kfe-dashboard.mjs` na
 raiz do produto) → http://localhost:4242. Mostra a jornada das etapas com
 status ao vivo, a missão atual (o que o loop espera de você), conquistas
 (piloto, fidelidade ≤1%, lotes, golden, retro, ciclo completo), lotes com
 tempo/diff e os últimos eventos do log. Zero manutenção: ele só LÊ o
-framework-state.md e o metrics.md que as skills já mantêm — deixe aberto num
-monitor enquanto o /framework-loop roda.
+kfe-state.md e o metrics.md que as skills já mantêm — deixe aberto num
+monitor enquanto o /kfe-loop roda.
 
 ## Velocidade e prova (v2.5)
 
 - **Paralelo**: do 2º lote em diante, a UI despacha subagentes (até 4) para
   componentes independentes — a verificação central continua uma só.
-- **CI guardião**: instalado pela INSTALL (.github/workflows/framework.yml),
+- **CI guardião**: instalado pela INSTALL (.github/workflows/kfe.yml),
   bloqueia merge que quebre lint, tipos, build ou a golden screen.
 - **Relatório pro cliente**: `node <kit>/scripts/lote-report.mjs <N>` gera
   reports/lote-<N>.html — números + lado a lado, pronto pra enviar.
@@ -114,6 +114,6 @@ monitor enquanto o /framework-loop roda.
 
 ## Os 5 comandos, decorados
 
-`/framework-new-product` · `/framework-onboard` · `/framework-new-screens`
-· `/framework-new-ds` · `/framework-loop` (+ `/framework-next` passo a
-passo e `/framework-status` pra se localizar).
+`/kfe-new-product` · `/kfe-onboard` · `/kfe-new-screens`
+· `/kfe-new-ds` · `/kfe-loop` (+ `/kfe-next` passo a
+passo e `/kfe-status` pra se localizar).

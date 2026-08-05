@@ -1,5 +1,5 @@
-Continue o Framework de IA do ponto atual.
+Continue o Kill Front-End do ponto atual.
 
-Carregue a skill `framework`, leia `docs/framework-state.md` e execute o passo
+Carregue a skill `kill-front-end`, leia `docs/kfe-state.md` e execute o passo
 seguinte do loop. Se a etapa atual está `aguardando-gate`, apresente o resumo
 do gate novamente e aguarde a aprovação antes de avançar.
