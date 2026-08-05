@@ -1,4 +1,4 @@
-# Framework de IA — Kit de Skills (v2.4)
+# Framework de IA — Kit de Skills (v2.5)
 
 Sistema de skills que executa o Framework de IA — agnóstico de empresa e
 projeto: qualquer produto novo, produto existente ou design system de
@@ -53,7 +53,7 @@ Estado em `docs/framework-state.md` — sobrevive entre sessões.
 ## Conteúdo do kit
 
 `skills/` (12) · `commands/` (6) · `templates/` (esqueletos de todos os
-artefatos docs/) · `scripts/pixel-diff.js` · `install.sh` · CHANGELOG.md
+artefatos docs/) · `scripts/` (pixel-diff · framework-dashboard · lote-report) · `calibration-global.md` · `install.sh` · CHANGELOG.md
 
 ## Mapa das skills
 

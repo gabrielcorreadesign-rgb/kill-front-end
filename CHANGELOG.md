@@ -1,5 +1,14 @@
 # Changelog — Framework de IA (kit)
 
+## v2.5
+- Paralelização com subagentes na fw-ui (até 4, verificação central única).
+- CI guardião: templates/ci-framework.yml instalado pela fw-install —
+  lint, tipos, build e golden bloqueando merge.
+- Relatório de lote pro cliente: scripts/lote-report.mjs (números + lado a
+  lado a partir de metrics.md e dos pares de screenshot).
+- Calibração global do kit (calibration-global.md): produtos novos herdam;
+  a retro promove regras genéricas de volta — aprendizado composto.
+
 ## v2.4
 - Painel visual gamificado (scripts/framework-dashboard.mjs + /framework-dashboard):
   jornada das etapas ao vivo, missão atual, conquistas, lotes e log —

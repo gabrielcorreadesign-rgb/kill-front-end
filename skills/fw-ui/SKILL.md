@@ -60,6 +60,25 @@ Entrega termina nos componentes: fundações → primitivos → compostos →
 showcase (página que exibe cada componente em todas as variantes/estados —
 é o "produto" deste modo e o objeto do gate). Telas não são geradas.
 
+## Paralelização (subagentes)
+Lote com 3+ componentes SEM dependência entre si → despache 1 subagente por
+componente (máx. 4 simultâneos), cada um recebendo o trio de contexto (frame
+via MCP + skill do projeto + calibration.md) e rodando geração + auto-
+verificação. Regras do paralelo:
+- A verificação FINAL (pixel-diff) é sempre refeita pela sessão orquestradora
+  — nunca aceite o "passou" do próprio gerador.
+- Arquivos compartilhados (tokens, index, rotas) só o orquestrador edita —
+  subagente que precisar de mudança neles reporta, não toca.
+- Telas e componentes interdependentes ficam em série.
+- Primeiro lote do produto: rode em série para calibrar; paralelize do
+  segundo em diante.
+
+## Relatório de lote (opcional, recomendado em cliente)
+Após o gate aprovado: salve os pares <item>.figma.png / <item>.render.png
+(+ <item>.diff.txt com o %) em reports/lote-<N>/ e rode
+`node <kit>/scripts/lote-report.mjs <N>` → reports/lote-<N>.html, o
+comprovante apresentável do lote (números + lado a lado).
+
 ## Ordem e lotes
 Fundações → componentes (primitivos → compostos) → telas (só instâncias;
 elemento sem componente = criar o par primeiro). Lotes de 1 tela ou 3–5

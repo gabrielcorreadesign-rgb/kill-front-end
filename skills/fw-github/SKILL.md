@@ -28,7 +28,10 @@ QA com checklist verde e assinado; contrato OpenAPI fiel aos mocks (audite antes
 5. **G5 · Retro do framework**: conduza com o humano (15 min): o que travou?
    o que foi corrigido 2x? qual etapa demorou mais que devia? Converta cada
    resposta em item de `docs/framework-retro.md` com destino (qual skill/
-   hook/regra melhora). Este arquivo alimenta a próxima versão do framework. Consolide também o
+   hook/regra melhora). Este arquivo alimenta a próxima versão do framework. Revise o
+   docs/calibration.md do produto: toda regra que vale pra QUALQUER produto
+   (não específica deste Figma) é promovida ao `calibration-global.md` do
+   kit — aprendizado composto entre projetos. Consolide também o
    bloco "Por ciclo" de `docs/metrics.md` — é o que substitui o "~40%"
    estimado por um número medido, seu.
 

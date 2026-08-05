@@ -27,7 +27,12 @@ SRS concluída (o CLAUDE.md referencia docs/ que precisam existir); permissão p
    produto.
 5. **I3 · Hooks**: UserPromptSubmit injetando lembrete curto (skill do
    projeto + CLAUDE.md); Stop limpando artefatos temporários.
-6. **I5 · Anti-token**: confira que CLAUDE.md e skills usam referência por
+6. **Calibração herdada + CI guardião**: crie docs/calibration.md a partir
+   de `templates/calibration.md` e IMPORTE as regras de `calibration-global.md`
+   do kit (o produto nasce com as cicatrizes dos projetos anteriores curadas).
+   Copie `templates/ci-framework.yml` para .github/workflows/framework.yml —
+   lint, tipos, build e golden screen bloqueando merge desde o commit 0.
+7. **I5 · Anti-token**: confira que CLAUDE.md e skills usam referência por
    caminho, não conteúdo colado; exemplos mínimos; uma fonte por assunto.
 
 ## Definição de pronto (artefatos)

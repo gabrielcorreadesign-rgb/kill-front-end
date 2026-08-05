@@ -68,3 +68,6 @@ componente). Re-rodar uma etapa concluída exige confirmação do humano.
 | Fontes | docs/fonts-checklist.md |
 | Métricas | docs/metrics.md |
 | Golden screens | tests/golden/ |
+| Relatórios de lote | reports/ |
+| CI do produto | .github/workflows/framework.yml |
+| Calibração global | <kit>/calibration-global.md |

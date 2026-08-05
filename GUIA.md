@@ -91,6 +91,17 @@ tempo/diff e os últimos eventos do log. Zero manutenção: ele só LÊ o
 framework-state.md e o metrics.md que as skills já mantêm — deixe aberto num
 monitor enquanto o /framework-loop roda.
 
+## Velocidade e prova (v2.5)
+
+- **Paralelo**: do 2º lote em diante, a UI despacha subagentes (até 4) para
+  componentes independentes — a verificação central continua uma só.
+- **CI guardião**: instalado pela INSTALL (.github/workflows/framework.yml),
+  bloqueia merge que quebre lint, tipos, build ou a golden screen.
+- **Relatório pro cliente**: `node <kit>/scripts/lote-report.mjs <N>` gera
+  reports/lote-<N>.html — números + lado a lado, pronto pra enviar.
+- **Calibração global**: todo produto novo herda `calibration-global.md` do
+  kit; a retro promove regras genéricas de volta pro kit.
+
 ## Quando algo trava
 
 - A IA reporta `BLOQUEIO` no formato padrão → leia "Preciso de:" e responda.

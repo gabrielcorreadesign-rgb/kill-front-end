@@ -1,0 +1,29 @@
+# Guardião do Framework de IA — copie para .github/workflows/framework.yml
+# O pipeline vira instituição: nada mergeia quebrando lint, tipos, build
+# ou a golden screen — nem num dia apressado.
+name: framework-guardian
+on: [pull_request]
+jobs:
+  guardian:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Tipos
+        run: npx tsc --noEmit
+      - name: Build
+        run: npm run build
+      - name: Golden screen (regressão do pipeline)
+        run: |
+          if [ -d tests/golden ] && npm run | grep -q "golden:check"; then
+            npm run golden:check
+          else
+            echo "golden ainda não configurada — crie na etapa MCP e defina o script golden:check"
+          fi
+# golden:check no package.json do produto (definido na etapa MCP):
+#   renderiza a golden nos params registrados (Playwright) e roda
+#   node <kit>/scripts/pixel-diff.js tests/golden/<tela>/figma.png novo-render.png
