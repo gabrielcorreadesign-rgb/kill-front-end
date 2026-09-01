@@ -31,7 +31,14 @@ QA com checklist verde e assinado; contrato OpenAPI fiel aos mocks (audite antes
    hook/regra melhora). Este arquivo alimenta a próxima versão do framework. Revise o
    docs/calibration.md do produto: toda regra que vale pra QUALQUER produto
    (não específica deste Figma) é promovida ao `calibration-global.md` do
-   kit — aprendizado composto entre projetos. Consolide também o
+   kit — aprendizado composto entre projetos. Faça o MESMO com a camada 2:
+   revise a seção 2 do `docs/interactions.md` e promova ao
+   `interactions-global.md` do kit toda regra de estado que não depende deste
+   produto (numere na sequência I16, I17…). Rode
+   `node <kit>/scripts/kfe-interactions.mjs summary` e registre na retro
+   quantos estados vieram de cada origem: a fatia de `inferido` subindo e a de
+   `humano` caindo ciclo a ciclo é a prova numérica de que a inteligência do
+   kit está engordando. Consolide também o
    bloco "Por ciclo" de `docs/metrics.md` — é o que substitui o "~40%"
    estimado por um número medido, seu.
 

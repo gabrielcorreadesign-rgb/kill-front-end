@@ -26,18 +26,30 @@ Lote da fw-ui recém-fechado (esta etapa roda por lote, nunca "no final"); pipel
 4. **C4 · ADRs**: cada desvio de padrão aprovado no lote vira uma entrada em
    `docs/adr.md`: data, o que desviou, por quê, quem aprovou. Três linhas
    bastam.
-5. **Paridade**: rode a auditoria Figma ↔ código do lote. Componente órfão
+5. **C5 · Registro de componentes (a memória da camada 2)**: para cada
+   componente do lote, grave a entrada em `docs/components-registry.json`
+   lendo o código gerado — nome, família, node do Figma, lote, variants,
+   tokens, motion e, por estado, `impl` + `source`
+   (`figma|declarado|banco|inferido|humano`) + `rule` + `precedent` +
+   `approvedIn`. Nunca à mão, nunca de memória: leia o código. Este arquivo é
+   o que faz o componente 40 nascer sabendo o que os 39 anteriores decidiram.
+   Depois de gravar, rode `node <kit>/scripts/kfe-interactions.mjs audit` e
+   `... pending` e leve o resultado pro gate da UI.
+6. **Paridade**: rode a auditoria Figma ↔ código do lote. Componente órfão
    de um lado → reporte no gate da UI.
 
 ## Definição de pronto (artefatos)
 
 - Catálogo/página /design-system atualizada com o lote
 - `docs/regras.md` e specs sincronizadas · `docs/adr.md` com os desvios
+- `docs/components-registry.json` com TODO componente do lote · `audit` sem
+  divergência de regra não registrada
 
 ## Gate (técnico)
 
-Checklist verde: todo componente do lote com doc, pipeline rodou sem passo
-manual, zero órfão de paridade (ou órfãos reportados). Sem aprovação humana
+Checklist verde: todo componente do lote com doc, registro atualizado,
+pipeline rodou sem passo manual, zero órfão de paridade (ou órfãos
+reportados). Sem aprovação humana
 dedicada — o resultado aparece no gate da UI.
 
 ## Regras

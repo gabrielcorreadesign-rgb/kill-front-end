@@ -24,13 +24,25 @@ Specs das áreas em teste existentes e atuais (roteiro nasce da spec); Playwrigh
 4. **Q3 · Preview**: publique na Vercel (deploy por branch). Gere
    `docs/qa-release.md` (a partir de `templates/qa-release.md`): checklist com os fluxos testados (verde/vermelho),
    URL do preview e instruções de teste manual pro time.
-5. **Q5 · Critério de saída**: release pronta quando (a) fluxos críticos
+5. **Q6 · Estados (camada 2)**: rode a suíte de golden por estado —
+   `tests/golden/states/<componente>-<estado>.png`. O roteiro dirige o
+   componente até o estado (hover, foco por teclado, disabled, loading,
+   error, empty) e compara com o golden aprovado via
+   `scripts/pixel-diff.js`. Sem golden ainda → capture e leve pro gate; o
+   humano aprova UMA vez e a partir dali é regressão automática. Inclua
+   sempre: foco visível na navegação por teclado (I4), motion reduzido com
+   `prefers-reduced-motion` (I12) e alvo de toque de 44px (I15) — os três não
+   dependem de declaração e falham como bug, não como pendência.
+6. **Q5 · Critério de saída**: release pronta quando (a) fluxos críticos
    verdes, (b) humano testou no preview, (c) zero bug bloqueante aberto,
-   (d) golden screen verde (regressão do pipeline — tests/golden/).
+   (d) golden screen verde (regressão do pipeline — tests/golden/),
+   (e) golden de estados verde e `kfe-interactions.mjs audit` sem divergência
+   de regra não registrada.
 
 ## Definição de pronto (artefatos)
 
 - `tests/e2e/` com os roteiros dos fluxos críticos
+- `tests/golden/states/` com o golden de cada estado dos componentes tocados
 - URL de preview na Vercel · `docs/qa-release.md` com o checklist
 
 ## Gate (humano)

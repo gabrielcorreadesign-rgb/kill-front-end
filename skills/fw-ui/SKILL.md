@@ -11,8 +11,10 @@ porque (a) só entra frame aprovado no checklist, (b) a extração é exata,
 
 ## Pré-voo
 Tokens pareados 1:1 · `docs/figma-checklist.md` existente · skill do projeto
-e CLAUDE.md no repo · MCP do Figma respondendo · `docs/calibration.md`
-existente (crie a partir de `templates/calibration.md` no primeiro uso) ·
+e CLAUDE.md no repo · MCP do Figma respondendo · `docs/interactions.md` com
+os componentes do lote declarados e `docs/components-registry.json`
+existente (camada 2 — sem eles não há de onde derivar estado) ·
+`docs/calibration.md` existente (crie a partir de `templates/calibration.md` no primeiro uso) ·
 GOLDEN SCREEN verde no início do lote e após qualquer mudança de tokens/
 dependência de UI (tests/golden/ — FAIL = bloqueio de pipeline, não do lote) · fontes do Figma instaladas no app
 (família E pesos exatos — fallback de fonte = reprovação automática).
@@ -27,11 +29,38 @@ dependência de UI (tests/golden/ — FAIL = bloqueio de pipeline, não do lote)
    Valor sem variable no Figma = furo do checklist → volta pro Figma.
 4. Assets (ícones, imagens, ilustrações): EXPORTE do Figma (SVG/PNG via MCP).
    Proibido redesenhar ou substituir por ícone "equivalente" de biblioteca.
-5. Estados (hover/focus/active/disabled/loading): vêm das VARIANTES do frame.
-   Estado sem variante desenhada não existe → não invente; registre a
-   ausência e siga (ou peça a variante, se o estado for exigido pela spec).
+5. Estados de interação: NÃO são extraídos do Figma por padrão (camada 2).
+   Veja o protocolo próprio logo abaixo.
 
-## Protocolo de verificação (por item)
+## Protocolo da camada 2 — estados (v3.1)
+
+O Figma manda no repouso; os estados são declarados e derivados. Para CADA
+estado de CADA componente do lote, percorra a cadeia de precedência do
+`protocols.md` NESTA ordem e pare no primeiro que resolver:
+
+1. **Desenhado no Figma?** (está na seção 4 do `docs/interactions.md`) →
+   extraia como camada 1 e meça com pixel-diff. Fim.
+2. **Declarado?** (seção 1 do interactions.md) → implemente literal. Fim.
+3. **Regra do banco?** → regras locais da seção 2 primeiro, depois I1–I15 de
+   `<kit>/interactions-global.md`. Aplique a regra ao token do componente.
+4. **Analogia** → `node <kit>/scripts/kfe-interactions.mjs precedent
+   <Componente> <familia> <estado>`. Saída com precedente → aplique e
+   registre a CITAÇÃO. Saída `PRECEDENTE: NENHUM` → passo 5.
+5. **BLOQUEIO** → protocolo de falha, pergunta objetiva ao humano. A resposta
+   vira regra local na seção 2 do interactions.md e nunca mais é perguntada.
+
+Regras duras:
+- Nunca invente um valor de estado. Copiar precedente citável é permitido;
+  improvisar não é. Sem precedente = bloqueio, sempre.
+- Toda decisão de nível 4 vai para a seção 3 do interactions.md (decisões
+  inferidas) e para o gate. Provisória até o humano aprovar.
+- Estado não declarado e não desenhado = o componente NÃO tem aquele estado.
+  Ausência é decisão; não preencha buraco por conta própria.
+- `focus-visible` (I4), `prefers-reduced-motion` (I12) e alvo de toque (I15)
+  são obrigatórios em todo componente interativo: não dependem de declaração
+  nem de precedente.
+
+## Protocolo de verificação (por item — camada 1)
 
 1. Renderize no viewport EXATO do frame (mesma largura; deviceScaleFactor 2;
    mesma fonte carregada — confirme que não houve fallback).
@@ -47,6 +76,21 @@ dependência de UI (tests/golden/ — FAIL = bloqueio de pipeline, não do lote)
    de render (fonte/subpixel — exceção aprovada, registrada com print).
 5. Aprovou → registre o % no log do lote. Todo item entra no gate COM o
    número, não com adjetivo.
+
+## Verificação da camada 2 (estados)
+
+Pixel-diff não serve para hover: não há contra o que comparar. Quem mede:
+
+1. **Golden por estado**: com o Playwright, force cada estado do componente
+   (hover, focus, disabled, loading…) e capture
+   `tests/golden/states/<componente>-<estado>.png`. A PRIMEIRA captura só
+   vira golden depois do aceite humano no gate; daí em diante, regressão é
+   medida com o mesmo `scripts/pixel-diff.js` contra o golden.
+2. **Consistência**: `node <kit>/scripts/kfe-interactions.mjs audit` — dois
+   componentes da mesma família aplicando REGRAS diferentes no mesmo estado é
+   perda de fidelidade. Unifique ou registre a exceção como regra local.
+3. **Pendências**: `node <kit>/scripts/kfe-interactions.mjs pending` gera a
+   tabela de decisões inferidas que vai no gate.
 
 ## Calibração (o que faz o ajuste desaparecer)
 
@@ -86,13 +130,21 @@ componentes; ao fim de cada lote: fw-doc + checagens (lint · tsc · build) +
 gate.
 
 ## Definição de pronto
-Itens do lote com diff ≤ limiar e geometria zero-divergente · estados das
-variantes implementados · assets exportados (não recriados) · a11y básica
+Itens do lote com diff ≤ limiar e geometria zero-divergente · estados
+declarados implementados com origem registrada (`figma|declarado|banco|
+inferido|humano`) e zero estado `inferido` sem precedente citado · golden de
+estado capturado · `audit` sem divergência de regra (ou exceção registrada) ·
+assets exportados (não recriados) · a11y básica
 (foco visível, contraste AA nos textos, alt/aria nos assets) · doc do
 componente escrita · checagens verdes.
 
 ## Gate (humano, por lote)
-Apresente por item: screenshot lado a lado + % de diff + exceções. Registre
+Apresente por item: screenshot lado a lado + % de diff + exceções. Apresente
+TAMBÉM, uma vez por lote, a tabela de **decisões inferidas** (saída do
+`kfe-interactions.mjs pending`): cada linha com o precedente citado, para o
+humano aprovar em bloco ou corrigir. Correção vira regra local na hora.
+Mesma inferência aprovada 2x na mesma família → promova a regra local antes
+do próximo lote (deixa de ser inferência). Registre
 a linha do lote em `docs/metrics.md` (tempo, itens, diff médio, ciclos,
 correções humanas — template em `templates/metrics.md`). Fidelidade
 o robô já mediu — o humano avalia o que máquina não vê: sensação, micro-

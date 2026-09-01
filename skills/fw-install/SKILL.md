@@ -27,9 +27,15 @@ SRS concluída (o CLAUDE.md referencia docs/ que precisam existir); permissão p
    produto.
 5. **I3 · Hooks**: UserPromptSubmit injetando lembrete curto (skill do
    projeto + CLAUDE.md); Stop limpando artefatos temporários.
-6. **Calibração herdada + CI guardião**: crie docs/calibration.md a partir
-   de `templates/calibration.md` e IMPORTE as regras de `calibration-global.md`
-   do kit (o produto nasce com as cicatrizes dos projetos anteriores curadas).
+6. **Calibração + interações herdadas + CI guardião**: crie
+   docs/calibration.md a partir de `templates/calibration.md` e IMPORTE as
+   regras de `calibration-global.md` do kit (o produto nasce com as
+   cicatrizes dos projetos anteriores curadas). Crie também
+   docs/interactions.md a partir de `templates/interactions.md` (importando
+   as regras I1–I15 de `interactions-global.md`) e
+   docs/components-registry.json a partir de
+   `templates/components-registry.json` com a lista de componentes VAZIA —
+   é a memória que vai alimentar a camada 2.
    Copie `templates/ci-kfe.yml` para .github/workflows/kfe.yml —
    lint, tipos, build e golden screen bloqueando merge desde o commit 0.
 7. **I5 · Anti-token**: confira que CLAUDE.md e skills usam referência por
@@ -39,6 +45,7 @@ SRS concluída (o CLAUDE.md referencia docs/ que precisam existir); permissão p
 
 - Repo esqueleto com lint + build verdes ("commit 0")
 - `CLAUDE.md` na raiz · templates nas pastas · hooks configurados
+- `docs/calibration.md` · `docs/interactions.md` · `docs/components-registry.json` criados
 - Kit de skills auxiliares instalado
 
 ## Gate (técnico)

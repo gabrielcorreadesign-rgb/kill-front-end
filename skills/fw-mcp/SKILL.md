@@ -24,7 +24,12 @@ invalida qualquer diff.
    - 100% dos containers com auto-layout (exceções listadas e justificadas)
    - Nomes semânticos do glossário (zero "Frame 427")
    - Cor, tipo, espaçamento e raio via variables — zero valor solto
-   - Componentes com variantes p/ TODOS os estados que a spec exige
+   - Estados de interação NÃO precisam estar desenhados (v3.1): eles são
+     declarados em `docs/interactions.md`. Variante desenhada é OPCIONAL —
+     quando existe, vira verdade absoluta e entra na seção 4 daquele arquivo
+     (medida por pixel-diff como o resto). O que este checklist exige é que
+     TODO componente do frame tenha uma linha de declaração — sem ela, a
+     camada 2 não tem entrada e o frame não passa.
    - Convenção de handoff escrita: componente vs. variante vs. token vs.
      instância
    Reprovação em qualquer critério = frame não entra na etapa 6. Sem "quase".
@@ -44,10 +49,15 @@ invalida qualquer diff.
 
 ## Definição de pronto
 Conexões validadas · checklist bloqueante publicado com parâmetros de render
-· piloto aprovada pelo humano · baseline + calibração iniciadas.
+· piloto aprovada pelo humano · baseline + calibração iniciadas ·
+`docs/interactions.md` com os componentes da piloto declarados e o registro
+`docs/components-registry.json` populado com o primeiro lote.
 
 ## Gate (humano)
 Compara piloto vs. Figma e aprova. Cada correção apontada vira regra
-(CLAUDE.md ou calibration.md) ANTES da etapa 6 abrir. Regras: Figma é a
-verdade absoluta; sem auto-layout, sem geração; nunca compensar arquivo
-bagunçado com prompt. Protocolos: `.claude/skills/kill-front-end/protocols.md`.
+(CLAUDE.md, calibration.md ou interactions.md) ANTES da etapa 6 abrir.
+Aproveite o gate da piloto para fechar a camada 2 do produto: o humano
+valida os estados derivados uma vez, e essas decisões viram o precedente
+que todos os lotes seguintes vão copiar. Regras: Figma é a verdade absoluta
+do repouso; sem auto-layout, sem geração; nunca compensar arquivo bagunçado
+com prompt. Protocolos: `.claude/skills/kill-front-end/protocols.md`.

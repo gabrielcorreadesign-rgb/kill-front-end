@@ -1,13 +1,14 @@
 ---
 name: kill-front-end
-description: Orquestrador do Kill Front-End (v2.3) — agnóstico de empresa e projeto: conduz a construção de qualquer produto com IA, do início à entrega de bastão, em 3 cenários de entrada (produto novo · existente com design system · existente sem/with DS incerto) e 3 modos de produção (new-product, new-screens, new-ds — design system como entrega). Use SEMPRE que o usuário pedir para iniciar um produto ou um design system, onboardar um produto existente, criar telas novas, continuar o fluxo (/kfe-next) ou consultar estado (/kfe-status). Esta skill roteia; nunca execute uma etapa sem passar por aqui.
+description: Orquestrador do Kill Front-End (v3.1) — agnóstico de empresa e projeto: conduz a construção de qualquer produto com IA, do início à entrega de bastão, em 3 cenários de entrada (produto novo · existente com design system · existente sem/with DS incerto) e 3 modos de produção (new-product, new-screens, new-ds — design system como entrega). Use SEMPRE que o usuário pedir para iniciar um produto ou um design system, onboardar um produto existente, criar telas novas, continuar o fluxo (/kfe-next) ou consultar estado (/kfe-status). Esta skill roteia; nunca execute uma etapa sem passar por aqui.
 ---
 
-# Kill Front-End — Orquestrador (v2)
+# Kill Front-End — Orquestrador (v3.1)
 
 Você conduz o fluxo. As skills de etapa executam. O humano é o orquestrador:
 decide nos gates; você executa entre eles.
-Protocolos comuns (pré-voo, definição de pronto, falha, idempotência):
+Protocolos comuns (camadas de verdade, pré-voo, definição de pronto, falha,
+idempotência):
 `.claude/skills/kill-front-end/protocols.md` — leia uma vez por sessão.
 
 ## Cenários de entrada (C0 — sempre o primeiro passo)
@@ -45,7 +46,7 @@ Resumo do formato:
 ```md
 # Kill Front-End — estado
 Produto: <nome> · Cenário: <A|B|C> · Modo: <new-product|new-screens>
-Kit: v2 · Início: <data> · Baseline de fidelidade: <—|N,N% (tela piloto)>
+Kit: v3.1 · Início: <data> · Baseline de fidelidade: <—|N,N% (tela piloto)>
 
 | # | Etapa | Status | Gate | Aprovado em |
 |---|-------|--------|------|-------------|
@@ -81,10 +82,17 @@ somente em gate humano, bloqueio ou fim do ciclo. Em ambos:
 
 - NUNCA pule gate humano, mesmo com autorização de loop contínuo.
 - NUNCA marque etapa concluída sem a definição de pronto batida.
-- NUNCA invente valor: dado que não veio do Figma (via MCP), do código ou do
-  humano não entra no produto. Sem o dado → pergunte ou releia; jamais estime.
+- NUNCA invente valor: dado que não veio do Figma (via MCP), do código, da
+  declaração de interações ou do humano não entra no produto. Sem o dado →
+  pergunte ou releia; jamais estime. Única derivação permitida: a analogia
+  da camada 2, e SÓ com precedente citado (componente + estado + lote).
+  Sem precedente citável = bloqueio, não estimativa.
 - Nenhum código de produto antes do INSTALL (cenário A) ou do ONBOARD (B/C).
-- O Figma é a verdade absoluta; divergência visual é bug do código.
+- O Figma é a verdade absoluta do ESTADO DE REPOUSO (camada 1): divergência
+  visual é bug do código, medida por pixel-diff. Estados de interação
+  (camada 2) NÃO precisam ser desenhados — são declarados em
+  `docs/interactions.md` e derivados pela cadeia de precedência do
+  protocols.md, com consistência medida no registro de componentes.
 - Humano decide, IA executa: escopo, fluxo e UX de interação são sempre
   opções apresentadas, nunca decisões silenciosas.
 - Repetiu 2x → proponha registrar em skill/CLAUDE.md/calibration antes de

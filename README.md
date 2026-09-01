@@ -1,9 +1,25 @@
-# Kill Front-End — Kit de Skills (v3.0)
+# Kill Front-End — Kit de Skills (v3.1)
 
 O design vira código pixel-perfect, medido. Sistema de skills — agnóstico de empresa e
 projeto: qualquer produto novo, produto existente ou design system de
 cliente. Da definição de stack à entrega, com humano orquestrador nos gates e
 geração **pixel-perfect medida** (diff de pixels com limiar, não "parecido").
+
+## O que mudou na v3.1 — as duas camadas de verdade
+
+O Figma continua mandando no **estado de repouso** (camada 1, medida por
+pixel-diff). Os **estados de interação** (hover, focus, disabled, loading,
+error…) saem do Figma: viram camada 2 — **declarados** em
+`docs/interactions.md` (uma linha por componente, sem desenhar nada) e
+**derivados** por uma cadeia de precedência: Figma desenhado → declaração →
+banco de regras (`interactions-global.md`, I1–I15) → analogia com precedente
+citado no `docs/components-registry.json` → pergunta ao humano.
+
+O registro de componentes é a memória: cada lote grava o que decidiu, e o
+componente seguinte herda o precedente em vez de improvisar. Consistência
+vira número (`scripts/kfe-interactions.mjs audit`) e os estados ganham
+regressão própria (`tests/golden/states/`). Menos tempo no Figma, mesma
+fidelidade — medida, não prometida.
 
 ## O que mudou na v2
 
@@ -53,7 +69,8 @@ Estado em `docs/kfe-state.md` — sobrevive entre sessões.
 ## Conteúdo do kit
 
 `skills/` (12) · `commands/` (6) · `templates/` (esqueletos de todos os
-artefatos docs/) · `scripts/` (pixel-diff · framework-dashboard · lote-report) · `calibration-global.md` · `install.sh` · CHANGELOG.md
+artefatos docs/) · `scripts/` (pixel-diff · framework-dashboard · lote-report · kfe-interactions) ·
+`calibration-global.md` · `interactions-global.md` · `install.sh` · CHANGELOG.md
 
 ## Mapa das skills
 
@@ -69,7 +86,8 @@ QA (preview) · GITHUB (final). INSTALL e DOC: gate técnico.
 
 ## Princípios
 
-Humano decide, IA executa · Figma é a verdade absoluta · nunca inventar
-valor (sem dado → perguntar, jamais estimar) · nada de código antes do
+Humano decide, IA executa · Figma é a verdade absoluta do repouso (estados
+seguem a cadeia de precedência da camada 2) · nunca inventar valor (sem dado
+→ perguntar, jamais estimar; analogia só com precedente citado) · nada de código antes do
 INSTALL/ONBOARD · repetiu 2x vira infraestrutura · back entregue pronto pra
 implementação manual, nunca implementado · todo projeto alimenta o framework.

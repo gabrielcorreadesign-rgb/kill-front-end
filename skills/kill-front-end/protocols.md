@@ -3,6 +3,31 @@
 Toda skill fw-* herda estes protocolos. A skill da etapa define O QUE; aqui
 está o COMO padrão.
 
+## Camadas de verdade (v3.1)
+
+O KFE tem DUAS camadas de verdade, e elas são verificadas de formas
+diferentes. Confundir as duas é o erro mais caro do pipeline.
+
+| | Camada 1 — Repouso | Camada 2 — Interação |
+|---|---|---|
+| O que é | Layout, geometria, tokens, tipografia, espaçamento, o estado default de tela e componente | hover · active · focus · disabled · loading · selected · empty · error · skeleton · motion |
+| Fonte | **Figma, verdade absoluta** | Declaração + banco de regras + analogia no registro |
+| Onde mora | Arquivo do Figma | `docs/interactions.md` · `<kit>/interactions-global.md` · `docs/components-registry.json` |
+| Como se mede | `scripts/pixel-diff.js` contra o export do frame — ≤1,0% e geometria zero-divergente | Golden por estado (`tests/golden/states/`) + `scripts/kfe-interactions.mjs audit` |
+| Divergência = | Bug do código | Bug de consistência (regra divergente dentro da família) |
+
+**Cadeia de precedência da camada 2** (obrigatória, por estado, por componente):
+
+1. Variante desenhada no Figma → `figma` (volta a ser camada 1, pixel-diff)
+2. Declaração em `docs/interactions.md` → `declarado`
+3. Regra do banco (local do produto > global do kit) → `banco`
+4. Analogia no registro, **com precedente citado** → `inferido` (provisório, vai ao gate)
+5. Nada acima resolve → **BLOQUEIO**, pergunte ao humano → `humano`
+
+Nível 4 sem precedente citável não é inferência: é chute. Chute é bloqueio.
+Rode `node <kit>/scripts/kfe-interactions.mjs precedent <Componente> <familia> <estado>`
+— se a saída for `PRECEDENTE: NENHUM`, escale pelo protocolo de falha.
+
 ## Pré-voo (antes de executar qualquer etapa)
 
 1. Os artefatos de entrada listados pela skill existem? (ex.: fw-ui exige
@@ -71,3 +96,7 @@ componente). Re-rodar uma etapa concluída exige confirmação do humano.
 | Relatórios de lote | reports/ |
 | CI do produto | .github/workflows/kfe.yml |
 | Calibração global | <kit>/calibration-global.md |
+| Declaração de interações | docs/interactions.md |
+| Registro de componentes | docs/components-registry.json |
+| Banco global de interações | <kit>/interactions-global.md |
+| Golden por estado | tests/golden/states/ |

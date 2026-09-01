@@ -91,6 +91,21 @@ tempo/diff e os últimos eventos do log. Zero manutenção: ele só LÊ o
 kfe-state.md e o metrics.md que as skills já mantêm — deixe aberto num
 monitor enquanto o /kfe-loop roda.
 
+## Estados sem desenhar no Figma (v3.1)
+
+- Você declara, não desenha: uma linha por componente em
+  `docs/interactions.md` (variants, estados, motion). Segundos, não horas.
+- A IA deriva pela cadeia: Figma desenhado → declaração → banco de regras →
+  analogia com precedente citado → pergunta. Nunca improvisa valor.
+- O `docs/components-registry.json` é a memória: cada lote grava o que
+  decidiu; o próximo componente herda. Fidelidade por consistência, medida
+  com `node <kit>/scripts/kfe-interactions.mjs audit`.
+- No gate da UI você aprova em bloco a tabela de **decisões inferidas** (cada
+  linha cita de qual componente ela copiou). Corrigiu? Vira regra local. A
+  mesma inferência aprovada 2x vira regra e some da lista.
+- Quer um estado pixel-perfect mesmo? Desenhe a variante no Figma e liste na
+  seção 4 do interactions.md — ela volta pra camada 1 e entra no pixel-diff.
+
 ## Velocidade e prova (v2.5)
 
 - **Paralelo**: do 2º lote em diante, a UI despacha subagentes (até 4) para

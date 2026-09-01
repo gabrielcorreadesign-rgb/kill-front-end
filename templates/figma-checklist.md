@@ -5,14 +5,16 @@
 - [ ] 100% dos containers com auto-layout (exceções listadas abaixo, justificadas)
 - [ ] Nomes semânticos do glossário — zero "Frame 427"
 - [ ] Cor, tipografia, espaçamento e raio via variables — zero valor solto
-- [ ] Variantes para TODOS os estados exigidos pela spec (hover/focus/active/disabled/loading/empty/error)
+- [ ] Todo componente do frame tem linha em `docs/interactions.md` (estados são DECLARADOS, não desenhados)
+- [ ] Variantes desenhadas (opcionais) listadas na seção 4 do interactions.md — viram verdade absoluta e entram no pixel-diff
 - [ ] Assets exportáveis (ícones/imagens marcados para export)
 
 ## Convenção de handoff
 | No Figma | Vira |
 |----------|------|
 | Componente | Componente React (par 1:1) |
-| Variante | Prop/estado do componente |
+| Variante desenhada | Prop/estado do componente — medido por pixel-diff |
+| Estado declarado (interactions.md) | Prop/estado do componente — derivado pela cadeia de precedência |
 | Variable | Token do config |
 | Instância | Uso/import — nunca reimplementação |
 

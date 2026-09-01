@@ -22,7 +22,16 @@ confirmado no gate da auditoria.
 4. **Infraestrutura**: skill do projeto + CLAUDE.md + checklist Figma +
    hooks, via fw-install em modo "sobre repo existente" (não recriar o que
    existe; completar o que falta).
-5. **Piloto de calibração**: rode a tela piloto da fw-mcp numa tela nova
+5. **Interações retroativas (camada 2)**: minere os estados que o código JÁ
+   tem — classes `hover:`, `focus-visible:`, `disabled:`, `aria-busy`,
+   transições — e popule `docs/components-registry.json` com origem
+   `declarado` (é o que o produto faz hoje, não invenção). Rode
+   `node <kit>/scripts/kfe-interactions.mjs audit`: as divergências que
+   aparecerem são o débito de consistência do produto — leve a lista pro
+   gate, o humano escolhe o padrão vencedor por família e ele vira regra
+   local em `docs/interactions.md`. A partir daí o produto passa a ter
+   memória de interação, e todo componente novo herda dela.
+6. **Piloto de calibração**: rode a tela piloto da fw-mcp numa tela nova
    pequena para medir a baseline de fidelidade deste produto.
 
 ## Modo C — engenharia reversa (sem DS ou incerto)
@@ -39,11 +48,15 @@ confirmado no gate da auditoria.
    com par no Figma, migrando os valores soltos dessas rotas para tokens.
    O resto do produto migra lote a lote, guiado por demanda.
 4. **Docs + infraestrutura**: como no modo B (passos 3–4).
-5. **Piloto de calibração**: idem modo B.
+5. **Interações retroativas**: idem modo B (passo 5) — em C isso costuma
+   render mais divergência que token solto; é normal, e é justamente o que
+   o registro passa a segurar.
+6. **Piloto de calibração**: idem modo B.
 
 ## Definição de pronto
 Mapa de tokens 1:1 · plano de paridade com donos · docs mínimas + skill +
-CLAUDE.md + checklist no repo · `docs/onboard-plan.md` (o que foi feito, o
+CLAUDE.md + checklist + `docs/interactions.md` e
+`docs/components-registry.json` populados no repo · `docs/onboard-plan.md` (o que foi feito, o
 que ficou de backlog) · baseline de fidelidade registrada no estado.
 
 ## Gate (humano)

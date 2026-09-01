@@ -1,5 +1,30 @@
 # Changelog — Kill Front-End (kit)
 
+## v3.1
+- DUAS CAMADAS DE VERDADE: o Figma passa a ser a verdade absoluta do ESTADO
+  DE REPOUSO (camada 1, pixel-diff ≤1%); estados de interação viram camada 2
+  — declarados, não desenhados. Regra não-negociável reescrita na
+  orquestradora e no protocols.md.
+- Cadeia de precedência por estado: Figma desenhado → declaração
+  (docs/interactions.md) → banco de regras → analogia com PRECEDENTE CITADO
+  → bloqueio/pergunta ao humano. Analogia sem precedente citável é chute e
+  bloqueia — o "nunca inventar valor" continua intacto.
+- `interactions-global.md`: banco de regras de interação do kit (I1–I15 +
+  famílias de componentes), herdado por todo produto novo; a retro promove
+  regras locais genéricas de volta pro kit.
+- `templates/interactions.md`: declaração por produto (variants, estados,
+  motion, regras locais, decisões inferidas, exceções desenhadas no Figma).
+- `templates/components-registry.json` + `scripts/kfe-interactions.mjs`
+  (precedent · audit · pending · summary): o registro vivo que dá memória à
+  IA — cada lote grava o que decidiu e o componente seguinte herda, com
+  auditoria de divergência de regra dentro da família.
+- Golden por estado (`tests/golden/states/`): hover/focus/disabled/loading
+  ganham regressão medida no QA, aprovada uma vez pelo humano.
+- fw-mcp/checklist: variante desenhada deixa de ser exigência — passa a ser
+  exigida a linha de declaração. fw-doc grava o registro por lote; fw-onboard
+  minera as interações do código existente (B/C nascem com memória);
+  fw-github promove regras e mede a evolução das origens na retro.
+
 ## v3.0
 - REBRAND: o framework agora se chama Kill Front-End (KFE). Skill
   orquestradora `kill-front-end`, comandos /kfe-*, estado em
