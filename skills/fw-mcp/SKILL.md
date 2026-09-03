@@ -10,7 +10,7 @@ A IA ganha olhos no design real — e aqui se define COMO esses olhos medem.
 ## Pré-voo
 Repo pós-INSTALL (cenário A) ou pós-ONBOARD parcial (B/C) · arquivo Figma
 acessível · permissão pra instalar o Playwright MCP · FONTES resolvidas:
-preencha `docs/fonts-checklist.md` (de `templates/fonts-checklist.md`) —
+preencha `docs/processo/fonts-checklist.md` (de `templates/fonts-checklist.md`) —
 licença + instalação + anti-fallback — ANTES da pilota; fallback silencioso
 invalida qualquer diff.
 
@@ -20,12 +20,12 @@ invalida qualquer diff.
    um frame E um export de asset. Qualquer falha → BLOQUEIO (nada de seguir
    "no escuro").
 2. **M2+M5 · Checklist de prontidão (bloqueante)**: gere
-   `docs/figma-checklist.md` a partir de `templates/figma-checklist.md`. Critérios mínimos, todos verificáveis:
+   `docs/processo/figma-checklist.md` a partir de `templates/figma-checklist.md`. Critérios mínimos, todos verificáveis:
    - 100% dos containers com auto-layout (exceções listadas e justificadas)
    - Nomes semânticos do glossário (zero "Frame 427")
    - Cor, tipo, espaçamento e raio via variables — zero valor solto
    - Estados de interação NÃO precisam estar desenhados (v3.1): eles são
-     declarados em `docs/interactions.md`. Variante desenhada é OPCIONAL —
+     declarados em `docs/processo/interactions.md`. Variante desenhada é OPCIONAL —
      quando existe, vira verdade absoluta e entra na seção 4 daquele arquivo
      (medida por pixel-diff como o resto). O que este checklist exige é que
      TODO componente do frame tenha uma linha de declaração — sem ela, a
@@ -42,7 +42,7 @@ invalida qualquer diff.
 5. **M3 · Tela piloto (baseline)**: uma tela simples, ciclo completo da
    fw-ui (extração → geração → diff). Anote: % de diff final, nº de ciclos,
    causas das divergências. Grave a baseline no kfe-state e as causas
-   como primeiras entradas do `docs/calibration.md`.
+   como primeiras entradas do `docs/processo/calibration.md`.
 6. **Golden screen**: congele a piloto aprovada como regressão do pipeline —
    crie `tests/golden/<tela>/` (figma.png, render.png, params.md) seguindo
    `templates/golden-readme.md` (copie-o para tests/golden/README.md).
@@ -50,8 +50,8 @@ invalida qualquer diff.
 ## Definição de pronto
 Conexões validadas · checklist bloqueante publicado com parâmetros de render
 · piloto aprovada pelo humano · baseline + calibração iniciadas ·
-`docs/interactions.md` com os componentes da piloto declarados e o registro
-`docs/components-registry.json` populado com o primeiro lote.
+`docs/processo/interactions.md` com os componentes da piloto declarados e o registro
+`docs/processo/components-registry.json` populado com o primeiro lote.
 
 ## Gate (humano)
 Compara piloto vs. Figma e aprova. Cada correção apontada vira regra

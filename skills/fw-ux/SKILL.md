@@ -18,25 +18,35 @@ Modo completo: PRD existente (o corte v1 conversa com o não-escopo). Modo lite:
 2. **U2 · Síntese**: transcreva/organize, clusterize dores e desejos, extraia
    insights. Apresente como hipóteses ("o material sugere X") — o humano
    valida o que é real e o que é ruído.
-3. **U3 · User flows**: desenhe os fluxos principais em Mermaid dentro de
-   `docs/flows.md` (um diagrama por jornada). Nenhuma tela antes disso.
-4. **U4 · Direção visual**: monte `docs/direcao-visual.md` — referências,
-   tom, personalidade, o vocabulário que o DS vai seguir. Proponha; o gosto
-   final é do humano.
+3. **U3 · User flows**: desenhe os fluxos principais em Mermaid na seção
+   **Fluxos** de `docs/04-navegacao.md` (um diagrama por jornada), e preencha
+   a tabela de rotas do mesmo arquivo. Nenhuma tela antes disso.
+4. **U4 · Direção visual**: preencha a seção **Direção visual** de
+   `docs/02-design-system.md` — referências, tom, personalidade, e o
+   anti-moodboard (o que este produto NUNCA parece). Proponha; o gosto final
+   é do humano. As Fundações logo abaixo não são suas: quem preenche é a
+   fw-ui, com valores extraídos do Figma.
 5. **U5 · Corte da v1**: liste features candidatas e proponha o corte, ligado
-   ao não-escopo do PRD. `docs/escopo-v1.md`: o que entra, o que fica pra
-   depois, com uma linha de motivo cada.
+   ao NÃO-ESCOPO. Preencha a seção **Escopo v1** de `docs/00-visao-geral.md`:
+   o que entra, o que fica pra depois, com uma linha de motivo cada — entra
+   e não-entra são a mesma conversa, por isso moram no mesmo arquivo.
 
 ## Modo lite (new-screens)
 
-Pule U1/U4. Execute: U3 pro fluxo das telas novas (adicione ao flows.md),
-U5 mini-corte (o que exatamente entra neste lote) e confira as specs das
-áreas novas na SRS — se não existem, crie-as agora (regra D4).
+Pule U1/U4. Execute: U3 pro fluxo das telas novas (adicione ao
+`docs/04-navegacao.md`, seção Fluxos, e à tabela de rotas), U5 mini-corte
+(o que exatamente entra neste lote) e confira as features das áreas novas em
+`docs/features/` — se não existem, crie-as agora a partir de
+`<kit>/templates/docs/features/feature.md` (regra D4) e rode
+`node <kit>/scripts/kfe-docs.mjs index`.
 
 ## Definição de pronto (artefatos)
 
-- `docs/flows.md` · `docs/escopo-v1.md` (ou adendo do lote)
-- Modo completo: síntese de pesquisa + `docs/direcao-visual.md`
+- `docs/04-navegacao.md` (rotas + fluxos) · seção Escopo v1 de
+  `docs/00-visao-geral.md` (ou adendo do lote)
+- Modo completo: síntese de pesquisa + seção Direção visual de
+  `docs/02-design-system.md`
+- Modo lite: `docs/features/*` das áreas novas, no template do tipo
 
 ## Gate (humano — FORTE)
 

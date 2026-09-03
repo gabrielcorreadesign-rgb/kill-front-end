@@ -22,7 +22,7 @@ Specs das áreas em teste existentes e atuais (roteiro nasce da spec); Playwrigh
    roteiro → até verde. Máximo 3 ciclos por bug; travou → escale pro humano
    com o diagnóstico. Bug de fluxo crítico BLOQUEIA a entrega — sem exceção.
 4. **Q3 · Preview**: publique na Vercel (deploy por branch). Gere
-   `docs/qa-release.md` (a partir de `templates/qa-release.md`): checklist com os fluxos testados (verde/vermelho),
+   `docs/processo/qa-release.md` (a partir de `templates/qa-release.md`): checklist com os fluxos testados (verde/vermelho),
    URL do preview e instruções de teste manual pro time.
 5. **Q6 · Estados (camada 2)**: rode a suíte de golden por estado —
    `tests/golden/states/<componente>-<estado>.png`. O roteiro dirige o
@@ -43,7 +43,7 @@ Specs das áreas em teste existentes e atuais (roteiro nasce da spec); Playwrigh
 
 - `tests/e2e/` com os roteiros dos fluxos críticos
 - `tests/golden/states/` com o golden de cada estado dos componentes tocados
-- URL de preview na Vercel · `docs/qa-release.md` com o checklist
+- URL de preview na Vercel · `docs/processo/qa-release.md` com o checklist
 
 ## Gate (humano)
 

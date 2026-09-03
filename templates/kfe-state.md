@@ -1,6 +1,6 @@
 # Kill Front-End — estado
 Produto: <nome> · Cenário: <A|B|C> · Modo: <new-product|new-screens>
-Kit: v2.1 · Início: <AAAA-MM-DD> · Baseline de fidelidade: <—|N,N% (tela piloto)>
+Kit: v3.2 · Início: <AAAA-MM-DD> · Baseline de fidelidade: <—|N,N% (tela piloto)>
 
 <!-- Cenário A: use a tabela 1–9. Cenários B/C: use AUDIT/ONBOARD + 5–9. -->
 

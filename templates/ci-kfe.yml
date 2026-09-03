@@ -1,6 +1,6 @@
 # Guardião do Kill Front-End — copie para .github/workflows/kfe.yml
-# O pipeline vira instituição: nada mergeia quebrando lint, tipos, build
-# ou a golden screen — nem num dia apressado.
+# O pipeline vira instituição: nada mergeia quebrando lint, tipos, build,
+# a arquitetura da doc ou a golden screen — nem num dia apressado.
 name: kfe-guardian
 on: [pull_request]
 jobs:
@@ -17,6 +17,15 @@ jobs:
         run: npx tsc --noEmit
       - name: Build
         run: npm run build
+      - name: Doc audit (arquitetura da documentação)
+        run: |
+          KIT="${KFE_KIT:-$HOME/.claude/kfe-kit}"
+          if [ -f "$KIT/scripts/kfe-docs.mjs" ]; then
+            node "$KIT/scripts/kfe-docs.mjs" audit
+          else
+            echo "kit não encontrado em $KIT — defina KFE_KIT ou vendorize scripts/kfe-docs.mjs"
+          fi
+
       - name: Golden screen (regressão do pipeline)
         run: |
           if [ -d tests/golden ] && npm run | grep -q "golden:check"; then
@@ -24,6 +33,9 @@ jobs:
           else
             echo "golden ainda não configurada — crie na etapa MCP e defina o script golden:check"
           fi
+# Doc audit: link quebrado, arquivo fora do template do seu tipo, órfão de
+#   índice e atributo duplicado fora de objetos/ reprovam o PR. Contrato em
+#   .claude/skills/kill-front-end/doc-architecture.md
 # golden:check no package.json do produto (definido na etapa MCP):
 #   renderiza a golden nos params registrados (Playwright) e roda
 #   node <kit>/scripts/pixel-diff.js tests/golden/<tela>/figma.png novo-render.png

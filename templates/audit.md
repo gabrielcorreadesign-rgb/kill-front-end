@@ -15,9 +15,18 @@ Variables: <sim/não/parcial> · Variantes: <…> · Auto-layout na amostra (5 f
 |----------|--------------|-------------|
 
 ## 5. Docs e infraestrutura
-| Artefato | Existe? | Atual? |
-|----------|---------|--------|
-| stack.md / PRD / regras / glossário / skill / CLAUDE.md | | |
+Saída de `kfe-docs.mjs init --dry` e `... audit`: <colar o resumo>
+
+| Situação | Arquivos |
+|----------|----------|
+| No formato | <lista> |
+| Fora do formato (reescrever no template) | <lista> |
+| Ausente | <lista> |
+| **Mentindo** (existe mas não bate com o código) | <lista — o pior caso> |
+
+| Infra | Existe? | Atual? |
+|-------|---------|--------|
+| skill do projeto / CLAUDE.md / CI / checklist Figma | | |
 
 ## 6. Classificação proposta
 Cenário <B|C> — justificativa: <evidências>. Na dúvida: C.

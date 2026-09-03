@@ -5,8 +5,18 @@ description: Onboarding de produto existente no Kill Front-End — modo pareamen
 
 # fw-onboard — Onboarding de produto existente
 
-Entrada obrigatória: `docs/audit.md` aprovado. O modo vem do cenário
+Entrada obrigatória: `docs/processo/audit.md` aprovado. O modo vem do cenário
 confirmado no gate da auditoria.
+
+**Primeiro comando, antes de qualquer passo dos dois modos:**
+```bash
+node <kit>/scripts/kfe-docs.mjs init      # veja antes com --dry
+```
+Ele cria a árvore de documentação do produto e **migra o layout antigo**
+(prd/stack/specs soltos, maquinário na raiz) para o formato canônico, via
+`git mv` — histórico preservado. É idempotente: nada é sobrescrito. A partir
+daí toda doc retroativa é escrita NO template do seu tipo, nunca em formato
+livre. Contrato: `.claude/skills/kill-front-end/doc-architecture.md`.
 
 ## Modo B — pareamento (existe DS de verdade)
 
@@ -16,20 +26,31 @@ confirmado no gate da auditoria.
 2. **Componentes**: transforme as 3 listas da auditoria em plano: pareados
    (ok) · só-código (criar par no Figma OU marcar interno sem par visual —
    decisão humana) · só-Figma (backlog de implementação).
-3. **Docs retroativas**: o que faltar de stack.md, glossário, regras e specs
-   das áreas ativas — escreva documentando O QUE É (modo retroativo: retratar,
-   não decidir). PRD só se o humano quiser.
+3. **Docs retroativas NA arquitetura**: rode `kfe-docs audit` — a saída É a
+   lista de trabalho ("fora do template de features/", "órfão de índice",
+   "aguardando fusão manual"). Preencha, em modo retroativo (retratar o que
+   existe, **não decidir** o que deveria existir):
+   - `docs/01-arquitetura.md` — a stack real, a lista negativa real
+   - `docs/02-design-system.md` — as fundações que o código já usa
+   - `docs/03-contrato-api.md` — os padrões que a API já pratica
+   - `docs/04-navegacao.md` — as rotas que existem hoje
+   - `docs/objetos/*` e `docs/features/*` das áreas ativas, cada um no
+     template do seu tipo
+   - `docs/glossario.md` — os nomes que o produto já usa (e os proibidos:
+     os sinônimos que você encontrou espalhados)
+   `docs/00-visao-geral.md` (PRD) só se o humano quiser. Feche com
+   `kfe-docs index` e `kfe-docs audit` — audit vermelho barra o gate.
 4. **Infraestrutura**: skill do projeto + CLAUDE.md + checklist Figma +
-   hooks, via fw-install em modo "sobre repo existente" (não recriar o que
-   existe; completar o que falta).
+   hooks + CI guardião (com o passo Doc audit), via fw-install em modo
+   "sobre repo existente" (não recriar o que existe; completar o que falta).
 5. **Interações retroativas (camada 2)**: minere os estados que o código JÁ
    tem — classes `hover:`, `focus-visible:`, `disabled:`, `aria-busy`,
-   transições — e popule `docs/components-registry.json` com origem
+   transições — e popule `docs/processo/components-registry.json` com origem
    `declarado` (é o que o produto faz hoje, não invenção). Rode
    `node <kit>/scripts/kfe-interactions.mjs audit`: as divergências que
    aparecerem são o débito de consistência do produto — leve a lista pro
    gate, o humano escolhe o padrão vencedor por família e ele vira regra
-   local em `docs/interactions.md`. A partir daí o produto passa a ter
+   local em `docs/processo/interactions.md`. A partir daí o produto passa a ter
    memória de interação, e todo componente novo herda dela.
 6. **Piloto de calibração**: rode a tela piloto da fw-mcp numa tela nova
    pequena para medir a baseline de fidelidade deste produto.
@@ -54,12 +75,16 @@ confirmado no gate da auditoria.
 6. **Piloto de calibração**: idem modo B.
 
 ## Definição de pronto
-Mapa de tokens 1:1 · plano de paridade com donos · docs mínimas + skill +
-CLAUDE.md + checklist + `docs/interactions.md` e
-`docs/components-registry.json` populados no repo · `docs/onboard-plan.md` (o que foi feito, o
-que ficou de backlog) · baseline de fidelidade registrada no estado.
+Mapa de tokens 1:1 · plano de paridade com donos · **`kfe-docs audit` sem
+erro** (árvore no formato, índices gerados, nada aguardando fusão) · skill +
+CLAUDE.md + checklist + `docs/processo/interactions.md` e
+`docs/processo/components-registry.json` populados no repo ·
+`docs/processo/onboard-plan.md` (o que foi feito, o que ficou de backlog) ·
+baseline de fidelidade registrada no estado.
 
 ## Gate (humano)
 Modo B: aprova o mapa de tokens e as decisões de paridade. Modo C: aprova o
-conjunto canônico + fonte + escopo do DS mínimo. Depois disso o produto
+conjunto canônico + fonte + escopo do DS mínimo. Nos dois: apresente a saída
+final do `kfe-docs audit` — é o comprovante de que a doc do produto entrou
+num formato que a IA sabe navegar sem abrir a pasta inteira. Depois disso o produto
 entra no modo new-screens. Protocolos: `.claude/skills/kill-front-end/protocols.md`.

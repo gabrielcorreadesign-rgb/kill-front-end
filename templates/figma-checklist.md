@@ -5,7 +5,7 @@
 - [ ] 100% dos containers com auto-layout (exceções listadas abaixo, justificadas)
 - [ ] Nomes semânticos do glossário — zero "Frame 427"
 - [ ] Cor, tipografia, espaçamento e raio via variables — zero valor solto
-- [ ] Todo componente do frame tem linha em `docs/interactions.md` (estados são DECLARADOS, não desenhados)
+- [ ] Todo componente do frame tem linha em `docs/processo/interactions.md` (estados são DECLARADOS, não desenhados)
 - [ ] Variantes desenhadas (opcionais) listadas na seção 4 do interactions.md — viram verdade absoluta e entram no pixel-diff
 - [ ] Assets exportáveis (ícones/imagens marcados para export)
 

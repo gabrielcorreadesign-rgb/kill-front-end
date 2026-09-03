@@ -32,14 +32,17 @@ Nome do produto e contexto de uma frase confirmados com o humano; cenário A ati
 4. **S6 · Lista negativa.** Escreva a lista do que é PROIBIDO (mínimo:
    styled-components, Redux, CSS solto fora do padrão, libs fora da base sem
    aprovação). Adicione proibições específicas do produto se houver.
-5. **S7 · Fronteira.** Crie o esqueleto do contrato: auth (Sanctum token),
-   envelope { data, meta, errors }, paginação, idioma dos campos (decidir PT
-   ou EN — nunca acidental). Rotas ficam vazias; a SRS e os mocks preenchem.
+5. **S7 · Fronteira.** Escreva os padrões em `docs/03-contrato-api.md`: auth
+   (Sanctum token), envelope { data, meta, errors }, paginação, erros,
+   idioma dos campos (decidir PT ou EN — nunca acidental). Crie o esqueleto
+   `docs/api-contract.yaml` ao lado. Rotas ficam vazias; a SRS e os mocks
+   preenchem.
 
 ## Definição de pronto (artefatos) (obrigatórios para concluir)
 
-- `docs/stack.md` — base, desvios com motivo, lista negativa
-- `docs/api-contract.yaml` — esqueleto OpenAPI (auth, envelope, convenções)
+- `docs/01-arquitetura.md` — base, desvios com motivo, lista negativa,
+  fronteira do back (template `<kit>/templates/docs/01-arquitetura.md`)
+- `docs/03-contrato-api.md` — padrões · `docs/api-contract.yaml` — esqueleto OpenAPI
 
 ## Gate (humano)
 

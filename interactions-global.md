@@ -1,8 +1,8 @@
 # Interações GLOBAIS do kit (banco de regras herdado por todo produto)
 <!-- Camada 2 da verdade do KFE. O Figma manda no ESTADO DE REPOUSO (camada 1,
      medida por pixel-diff). Estados de interação NÃO precisam ser desenhados:
-     são DECLARADOS em docs/interactions.md e DERIVADOS por estas regras.
-     A fw-install copia este arquivo para docs/interactions.md do produto no
+     são DECLARADOS em docs/processo/interactions.md e DERIVADOS por estas regras.
+     A fw-install copia este arquivo para docs/processo/interactions.md do produto no
      dia 1 (seção "Regras herdadas"). Regras específicas de um produto ficam
      lá; as genéricas sobem pra cá na retro (fw-github). Mesmo mecanismo da
      calibration-global.md — aprendizado composto entre projetos. -->
@@ -12,7 +12,7 @@
 | Ordem | Fonte | Marcação no registro | Vale como verdade? |
 |---|---|---|---|
 | 1 | Variante desenhada no Figma | `figma` | Sim — pixel-diff ≤ 1,0% |
-| 2 | Declaração em `docs/interactions.md` | `declarado` | Sim — implementar literal |
+| 2 | Declaração em `docs/processo/interactions.md` | `declarado` | Sim — implementar literal |
 | 3 | Regra deste banco ou local do produto | `banco` | Sim — aplicar a regra |
 | 4 | Inferência por analogia no registro de componentes | `inferido` | Provisória — vai ao gate |
 | 5 | Nada acima resolve | — | BLOQUEIO: pergunte ao humano (`humano`) |
@@ -25,7 +25,7 @@ valor" intacto: a IA copia o que já foi aprovado, nunca improvisa um valor.
 
 Toda decisão nível 4 entra na lista "Decisões inferidas" do gate da UI. O
 humano aprova em bloco ou corrige. Aprovada 2x para a mesma família → vira
-regra local em `docs/interactions.md`; genérica → sobe pra cá na retro.
+regra local em `docs/processo/interactions.md`; genérica → sobe pra cá na retro.
 
 ## Famílias de componentes (define quem é "vizinho" para a analogia)
 

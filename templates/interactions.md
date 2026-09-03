@@ -1,10 +1,10 @@
 # Interações — <produto>
-Kit: v3.1 · Banco herdado: `<kit>/interactions-global.md` (regras I1–I15)
+Kit: v3.2 · Banco herdado: `<kit>/interactions-global.md` (regras I1–I15)
 
 <!-- ONDE OS ESTADOS SÃO DECLARADOS. O Figma manda no estado de repouso; aqui
      se declara o resto, SEM desenhar. Uma linha por componente. A IA lê este
      arquivo antes de gerar (fw-ui) e grava o resultado no registro
-     docs/components-registry.json (fw-doc). Preencher leva segundos: só o
+     docs/processo/components-registry.json (fw-doc). Preencher leva segundos: só o
      que o componente TEM, não como ele fica. -->
 
 ## 1. Declaração por componente

@@ -6,7 +6,7 @@ description: Diagnóstico de produto existente para o Kill Front-End — audita 
 # fw-audit — Diagnóstico de produto existente
 
 Objetivo: substituir "acho que tem um DS" por evidência. Saída única:
-`docs/audit.md` (a partir de `templates/audit.md`) com classificação e gaps.
+`docs/processo/audit.md` (a partir de `templates/audit.md`) com classificação e gaps.
 
 ## Pré-voo
 Acesso ao repositório; arquivo Figma do produto aberto/acessível via MCP
@@ -26,16 +26,24 @@ Acesso ao repositório; arquivo Figma do produto aberto/acessível via MCP
    amostra de 5 frames e reporte aprovação por critério.
 4. **Paridade**: cruze componentes do código com os do Figma. Três listas:
    pareados · só no código · só no Figma.
-5. **Docs e infraestrutura**: existem stack.md, PRD/regras, glossário, skill
-   do projeto, CLAUDE.md? O que está desatualizado (bate com o código?).
+5. **Docs e infraestrutura**: meça a doc contra a árvore canônica do
+   `.claude/skills/kill-front-end/doc-architecture.md`. Rode
+   `node <kit>/scripts/kfe-docs.mjs init --dry` (simulação: mostra o que
+   seria migrado sem escrever nada) e, se já houver `docs/`, `... audit`.
+   Reporte três coisas: o que existe no formato · o que existe fora do
+   formato (e vai precisar ser reescrito no template) · o que não existe.
+   Depois, o mais importante: **o que está desatualizado** — a doc que
+   existe bate com o código? Doc que mente é pior que doc ausente, porque
+   a IA confia nela.
 6. **Classificação**: proponha B (DS real: tokens disciplinados nos DOIS
    lados + maioria pareada) ou C (qualquer outro caso) com as evidências.
    Na dúvida entre B e C, classifique C — onboarding B com base podre
    contamina tudo.
 
 ## Definição de pronto
-`docs/audit.md` com: métricas por seção, as 3 listas de paridade, gaps
-priorizados, classificação proposta + justificativa.
+`docs/processo/audit.md` com: métricas por seção, as 3 listas de paridade,
+o diagnóstico de doc (no formato / fora do formato / ausente / mentindo),
+gaps priorizados, classificação proposta + justificativa.
 
 ## Gate (humano)
 O humano confirma o cenário e escolhe as telas-alvo do primeiro lote (o

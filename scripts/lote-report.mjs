@@ -2,7 +2,7 @@
 /**
  * lote-report.mjs — relatório de lote apresentável pro cliente (v2.5)
  * Uso (raiz do produto): node <kit>/scripts/lote-report.mjs <lote> [pasta-imgs]
- * Lê a linha do lote em docs/metrics.md e os pares <item>.figma.png /
+ * Lê a linha do lote em docs/processo/metrics.md e os pares <item>.figma.png /
  * <item>.render.png (+ opcional <item>.diff.txt com o %) da pasta
  * (default: reports/lote-<lote>/). Gera reports/lote-<lote>.html.
  * Zero dependências.
@@ -15,15 +15,19 @@ if (!lote) { console.error('Uso: node lote-report.mjs <lote> [pasta-imgs]'); pro
 const imgDir = process.argv[3] || `reports/lote-${lote}`;
 const outFile = `reports/lote-${lote}.html`;
 
+/** v3.2: o maquinário mora em docs/processo/. Fallback pro caminho antigo
+ *  enquanto o produto não roda `kfe-docs.mjs init`. */
+const doc = f => fs.existsSync(`docs/processo/${f}`) ? `docs/processo/${f}` : `docs/${f}`;
+
 let produto = 'Produto';
 try {
-  const st = fs.readFileSync('docs/kfe-state.md', 'utf8');
+  const st = fs.readFileSync(doc('kfe-state.md'), 'utf8');
   produto = (st.match(/Produto:\s*([^·\n]+)/) || [])[1]?.trim() || produto;
 } catch {}
 
 let row = null;
 try {
-  const mm = fs.readFileSync('docs/metrics.md', 'utf8');
+  const mm = fs.readFileSync(doc('metrics.md'), 'utf8');
   for (const m of mm.matchAll(/^\|([^|]*)\|([^|]*)\|([^|]*)\|([^|]*)\|([^|]*)\|([^|]*)\|([^|]*)\|/gm)) {
     const c = m.slice(1).map(s => s.trim());
     if (c[0] === String(lote)) { row = { itens: c[1], tempo: c[2], diff: c[3], ciclos: c[4], corr: c[5], data: c[6] }; break; }

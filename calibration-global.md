@@ -1,6 +1,6 @@
 # Calibração GLOBAL do kit (herdada por todo produto novo)
 <!-- Regras de geração válidas pra QUALQUER produto web. A fw-install copia
-     estas regras pro docs/calibration.md do produto no dia 1. Regras
+     estas regras pro docs/processo/calibration.md do produto no dia 1. Regras
      específicas de um Figma ficam no produto; as genéricas sobem pra cá
      na retro (fw-github). Aprendizado composto: o projeto 3 começa com as
      cicatrizes dos projetos 1 e 2 já curadas. -->

@@ -1,6 +1,6 @@
 {
   "product": "<produto>",
-  "kit": "3.1",
+  "kit": "3.2",
   "updated": "<ISO-8601>",
   "_doc": "Registro vivo de componentes — a memoria que alimenta a inferencia por analogia. Escrito pela fw-doc ao fim de CADA lote, nunca a mao. source de cada estado: figma | declarado | banco | inferido | humano.",
   "components": [

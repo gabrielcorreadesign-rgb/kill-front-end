@@ -10,11 +10,11 @@ porque (a) só entra frame aprovado no checklist, (b) a extração é exata,
 (c) a verificação é objetiva, (d) cada erro vira regra de calibração.
 
 ## Pré-voo
-Tokens pareados 1:1 · `docs/figma-checklist.md` existente · skill do projeto
-e CLAUDE.md no repo · MCP do Figma respondendo · `docs/interactions.md` com
-os componentes do lote declarados e `docs/components-registry.json`
+Tokens pareados 1:1 · `docs/processo/figma-checklist.md` existente · skill do projeto
+e CLAUDE.md no repo · MCP do Figma respondendo · `docs/processo/interactions.md` com
+os componentes do lote declarados e `docs/processo/components-registry.json`
 existente (camada 2 — sem eles não há de onde derivar estado) ·
-`docs/calibration.md` existente (crie a partir de `templates/calibration.md` no primeiro uso) ·
+`docs/processo/calibration.md` existente (crie a partir de `templates/calibration.md` no primeiro uso) ·
 GOLDEN SCREEN verde no início do lote e após qualquer mudança de tokens/
 dependência de UI (tests/golden/ — FAIL = bloqueio de pipeline, não do lote) · fontes do Figma instaladas no app
 (família E pesos exatos — fallback de fonte = reprovação automática).
@@ -38,7 +38,7 @@ O Figma manda no repouso; os estados são declarados e derivados. Para CADA
 estado de CADA componente do lote, percorra a cadeia de precedência do
 `protocols.md` NESTA ordem e pare no primeiro que resolver:
 
-1. **Desenhado no Figma?** (está na seção 4 do `docs/interactions.md`) →
+1. **Desenhado no Figma?** (está na seção 4 do `docs/processo/interactions.md`) →
    extraia como camada 1 e meça com pixel-diff. Fim.
 2. **Declarado?** (seção 1 do interactions.md) → implemente literal. Fim.
 3. **Regra do banco?** → regras locais da seção 2 primeiro, depois I1–I15 de
@@ -69,7 +69,7 @@ Regras duras:
    `npm i -D pixelmatch pngjs`). Geometria divergente = FAIL imediato.
 3. Aceite: diff ≤ 1,0% dos pixels E zero divergência de geometria (posição/
    tamanho de qualquer elemento). O limiar do produto pode ser apertado em
-   `docs/calibration.md`, nunca afrouxado sem exceção aprovada.
+   `docs/processo/calibration.md`, nunca afrouxado sem exceção aprovada.
 4. Reprovou → liste as maiores regiões divergentes com causa provável →
    corrija → repita. Máx. 3 ciclos; persistiu → classifique e escale:
    bug de código (corrigir) · furo do Figma (volta pro design) · limitação
@@ -94,7 +94,7 @@ Pixel-diff não serve para hover: não há contra o que comparar. Quem mede:
 
 ## Calibração (o que faz o ajuste desaparecer)
 
-`docs/calibration.md` é o livro-razão: toda divergência recorrente vira
+`docs/processo/calibration.md` é o livro-razão: toda divergência recorrente vira
 regra de geração (ex.: "line-height px do Figma → leading-[Npx], nunca
 leading-relaxed"). Releia no início de cada lote; aplique ANTES de gerar.
 Duas ocorrências do mesmo desvio sem regra registrada = falha de processo.
@@ -124,7 +124,9 @@ Após o gate aprovado: salve os pares <item>.figma.png / <item>.render.png
 comprovante apresentável do lote (números + lado a lado).
 
 ## Ordem e lotes
-Fundações → componentes (primitivos → compostos) → telas (só instâncias;
+Fundações (valores extraídos do Figma → seção Fundações de
+`docs/02-design-system.md`) → componentes (primitivos → compostos) → telas
+(só instâncias;
 elemento sem componente = criar o par primeiro). Lotes de 1 tela ou 3–5
 componentes; ao fim de cada lote: fw-doc + checagens (lint · tsc · build) +
 gate.
@@ -135,8 +137,9 @@ declarados implementados com origem registrada (`figma|declarado|banco|
 inferido|humano`) e zero estado `inferido` sem precedente citado · golden de
 estado capturado · `audit` sem divergência de regra (ou exceção registrada) ·
 assets exportados (não recriados) · a11y básica
-(foco visível, contraste AA nos textos, alt/aria nos assets) · doc do
-componente escrita · checagens verdes.
+(foco visível, contraste AA nos textos, alt/aria nos assets) ·
+`docs/componentes/<Componente>.md` escrito no template do tipo (a fw-doc
+fecha e audita) · checagens verdes.
 
 ## Gate (humano, por lote)
 Apresente por item: screenshot lado a lado + % de diff + exceções. Apresente
@@ -145,7 +148,7 @@ TAMBÉM, uma vez por lote, a tabela de **decisões inferidas** (saída do
 humano aprovar em bloco ou corrigir. Correção vira regra local na hora.
 Mesma inferência aprovada 2x na mesma família → promova a regra local antes
 do próximo lote (deixa de ser inferência). Registre
-a linha do lote em `docs/metrics.md` (tempo, itens, diff médio, ciclos,
+a linha do lote em `docs/processo/metrics.md` (tempo, itens, diff médio, ciclos,
 correções humanas — template em `templates/metrics.md`). Fidelidade
 o robô já mediu — o humano avalia o que máquina não vê: sensação, micro-
 interação, adequação. Correção apontada 2x → calibration.md antes do próximo

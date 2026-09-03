@@ -8,18 +8,21 @@
  *   pending                                      inferências sem aprovação de gate
  *   summary                                      cobertura de estados por família
  *
- * Lê docs/components-registry.json (escrito pela fw-doc a cada lote).
+ * Lê docs/processo/components-registry.json (escrito pela fw-doc a cada lote).
  * Zero dependências. Não decide nada sozinho: só devolve o precedente para a
  * fw-ui CITAR. Sem precedente, a saída é NENHUM — e isso é bloqueio, não chute.
  */
 import fs from 'node:fs';
 
-const FILE = 'docs/components-registry.json';
+/** v3.2: o maquinário mora em docs/processo/. Fallback pro caminho antigo
+ *  enquanto o produto não roda `kfe-docs.mjs init`. */
+const doc = f => fs.existsSync(`docs/processo/${f}`) ? `docs/processo/${f}` : `docs/${f}`;
+const FILE = doc('components-registry.json');
 const CONFIAVEIS = ['figma', 'declarado', 'humano', 'banco'];
 
 function load() {
   if (!fs.existsSync(FILE)) {
-    console.error(`Registro não encontrado: ${FILE}\nCrie a partir de <kit>/templates/components-registry.json (fw-install).`);
+    console.error(`Registro não encontrado: ${FILE}\nCrie em docs/processo/ a partir de <kit>/templates/components-registry.json (fw-install).`);
     process.exit(2);
   }
   const reg = JSON.parse(fs.readFileSync(FILE, 'utf8'));
@@ -42,7 +45,7 @@ function precedent([nome, familia, estado]) {
 
   if (!cand.length) {
     console.log(`PRECEDENTE: NENHUM (${familia}/${estado})`);
-    console.log('AÇÃO: BLOQUEIO — nível 5 da cadeia. Pergunte ao humano; a resposta vira regra local em docs/interactions.md.');
+    console.log('AÇÃO: BLOQUEIO — nível 5 da cadeia. Pergunte ao humano; a resposta vira regra local em docs/processo/interactions.md.');
     process.exit(1);
   }
   const c = cand[0], s = c.states[estado];
@@ -76,7 +79,7 @@ function audit() {
       for (const [criterio, comps] of usos) console.log(`  ${criterio}  ←  ${comps.join(', ')}`);
     }
   }
-  console.log(n ? `\n${n} divergência(s) de REGRA dentro de família. Isso é perda de fidelidade: unifique, ou registre a exceção como regra local em docs/interactions.md.`
+  console.log(n ? `\n${n} divergência(s) de REGRA dentro de família. Isso é perda de fidelidade: unifique, ou registre a exceção como regra local em docs/processo/interactions.md.`
                 : 'OK — nenhuma divergência de regra dentro de família.');
   process.exit(n ? 1 : 0);
 }

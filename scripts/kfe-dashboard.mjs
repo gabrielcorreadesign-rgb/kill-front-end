@@ -2,7 +2,7 @@
 /**
  * kfe-dashboard.mjs — painel visual automático do Kill Front-End (v2.4)
  * Uso (na raiz do produto): node <kit>/scripts/kfe-dashboard.mjs [porta]
- * Lê docs/kfe-state.md + docs/metrics.md e renderiza a jornada
+ * Lê docs/processo/kfe-state.md + docs/processo/metrics.md e renderiza a jornada
  * gamificada em http://localhost:4242 — auto-atualiza a cada 3s.
  * Zero dependências.
  */
@@ -11,11 +11,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const PORT = parseInt(process.argv[2] || '4242', 10);
-const STATE = path.resolve('docs/kfe-state.md');
-const METRICS = path.resolve('docs/metrics.md');
+/** v3.2: o maquinário mora em docs/processo/. Fallback pro caminho antigo
+ *  enquanto o produto não roda `kfe-docs.mjs init`. */
+const doc = f => fs.existsSync(`docs/processo/${f}`) ? `docs/processo/${f}` : `docs/${f}`;
+const STATE = path.resolve(doc('kfe-state.md'));
+const METRICS = path.resolve(doc('metrics.md'));
 
 function parseState() {
-  if (!fs.existsSync(STATE)) return { error: 'docs/kfe-state.md não encontrado — rode um comando /kfe-* primeiro.' };
+  if (!fs.existsSync(STATE)) return { error: 'docs/processo/kfe-state.md não encontrado — rode um comando /kfe-* primeiro.' };
   const md = fs.readFileSync(STATE, 'utf8');
   const meta = {};
   for (const line of md.split('\n').slice(0, 6)) {

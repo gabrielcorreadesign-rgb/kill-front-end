@@ -1,15 +1,18 @@
 ---
 name: kill-front-end
-description: Orquestrador do Kill Front-End (v3.1) — agnóstico de empresa e projeto: conduz a construção de qualquer produto com IA, do início à entrega de bastão, em 3 cenários de entrada (produto novo · existente com design system · existente sem/with DS incerto) e 3 modos de produção (new-product, new-screens, new-ds — design system como entrega). Use SEMPRE que o usuário pedir para iniciar um produto ou um design system, onboardar um produto existente, criar telas novas, continuar o fluxo (/kfe-next) ou consultar estado (/kfe-status). Esta skill roteia; nunca execute uma etapa sem passar por aqui.
+description: Orquestrador do Kill Front-End (v3.2) — agnóstico de empresa e projeto: conduz a construção de qualquer produto com IA, do início à entrega de bastão, em 3 cenários de entrada (produto novo · existente com design system · existente sem/with DS incerto) e 3 modos de produção (new-product, new-screens, new-ds — design system como entrega). Use SEMPRE que o usuário pedir para iniciar um produto ou um design system, onboardar um produto existente, criar telas novas, continuar o fluxo (/kfe-next) ou consultar estado (/kfe-status). Esta skill roteia; nunca execute uma etapa sem passar por aqui.
 ---
 
-# Kill Front-End — Orquestrador (v3.1)
+# Kill Front-End — Orquestrador (v3.2)
 
 Você conduz o fluxo. As skills de etapa executam. O humano é o orquestrador:
 decide nos gates; você executa entre eles.
-Protocolos comuns (camadas de verdade, pré-voo, definição de pronto, falha,
-idempotência):
-`.claude/skills/kill-front-end/protocols.md` — leia uma vez por sessão.
+Dois contratos herdados por todas as etapas — leia uma vez por sessão:
+- `.claude/skills/kill-front-end/protocols.md` — camadas de verdade, pré-voo,
+  definição de pronto, falha, idempotência, caminhos.
+- `.claude/skills/kill-front-end/doc-architecture.md` — como a `docs/` do
+  produto é organizada (SOLID aplicado a docs): árvore, donos, seções
+  obrigatórias por tipo. Verificada por `scripts/kfe-docs.mjs audit`.
 
 ## Cenários de entrada (C0 — sempre o primeiro passo)
 
@@ -37,7 +40,7 @@ classifica com evidências e o humano confirma. NUNCA assuma B sem auditar:
 cliente novo): o QA (8) reduz-se à golden screen + a11y dos componentes, e o
 GITHUB (9) entrega o DS documentado no lugar do handoff de back.
 
-## Protocolo de estado (`docs/kfe-state.md`)
+## Protocolo de estado (`docs/processo/kfe-state.md`)
 
 Crie a partir do template do kit: `templates/kfe-state.md` (cenário A
 usa a tabela 1–9; B/C usa AUDIT/ONBOARD + 5–9; new-screens registra lotes).
@@ -46,7 +49,7 @@ Resumo do formato:
 ```md
 # Kill Front-End — estado
 Produto: <nome> · Cenário: <A|B|C> · Modo: <new-product|new-screens>
-Kit: v3.1 · Início: <data> · Baseline de fidelidade: <—|N,N% (tela piloto)>
+Kit: v3.2 · Início: <data> · Baseline de fidelidade: <—|N,N% (tela piloto)>
 
 | # | Etapa | Status | Gate | Aprovado em |
 |---|-------|--------|------|-------------|
@@ -91,18 +94,25 @@ somente em gate humano, bloqueio ou fim do ciclo. Em ambos:
 - O Figma é a verdade absoluta do ESTADO DE REPOUSO (camada 1): divergência
   visual é bug do código, medida por pixel-diff. Estados de interação
   (camada 2) NÃO precisam ser desenhados — são declarados em
-  `docs/interactions.md` e derivados pela cadeia de precedência do
+  `docs/processo/interactions.md` e derivados pela cadeia de precedência do
   protocols.md, com consistência medida no registro de componentes.
 - Humano decide, IA executa: escopo, fluxo e UX de interação são sempre
   opções apresentadas, nunca decisões silenciosas.
 - Repetiu 2x → proponha registrar em skill/CLAUDE.md/calibration antes de
   continuar.
 - Back-end nunca é implementado: entrega-se contrato + mocks + handoff.
+- A `docs/` segue a arquitetura do `doc-architecture.md`: arquivo fora do
+  template do seu tipo, índice escrito à mão ou fato duplicado em dois
+  arquivos são bugs, não estilo. `kfe-docs audit` vermelho barra o gate.
 
 ## Templates e scripts do kit
 
-Todo artefato docs/ tem esqueleto em `templates/` — SEMPRE crie a partir
-dele (nunca invente formato). Verificação de fidelidade:
+Todo artefato docs/ tem esqueleto em `templates/` (os da árvore de doc em
+`templates/docs/`) — SEMPRE crie a partir dele, nunca invente formato.
+A árvore inteira nasce de um comando: `node <kit>/scripts/kfe-docs.mjs init`
+(idempotente; migra produto de layout antigo). Verificação de fidelidade:
 `scripts/pixel-diff.js` (requer `npm i -D pixelmatch pngjs` no produto).
 Painel visual: `scripts/kfe-dashboard.mjs` (comando
 /kfe-dashboard) — lê o estado e as métricas, zero manutenção.
+Arquitetura da doc: `scripts/kfe-docs.mjs` (`init` · `index` · `audit`) —
+o `audit` roda no gate da DOC e bloqueia no CI do produto.
